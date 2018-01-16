@@ -22,6 +22,8 @@
 		4D3F86A02008358600D738A0 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F869F2008358600D738A0 /* Comment.swift */; };
 		4D3F86A220083B2C00D738A0 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F86A120083B2C00D738A0 /* AddCommentViewController.swift */; };
 		4D3F86A42008476000D738A0 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F86A32008476000D738A0 /* CommentTableViewCell.swift */; };
+		4D5C1C07200E59A0004544D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D5C1C06200E59A0004544D8 /* GoogleService-Info.plist */; };
+		4D5C1C0B200E712D004544D8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C1C0A200E712D004544D8 /* ProfileViewController.swift */; };
 		4D6167EB2005A2ED007B9418 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6167EA2005A2ED007B9418 /* Post.swift */; };
 		4D6167ED2005A392007B9418 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6167EC2005A392007B9418 /* PostTableViewCell.swift */; };
 		4DB2DEE82004554500749129 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2DEE72004554500749129 /* HomeViewController.swift */; };
@@ -41,13 +43,11 @@
 		4DC4D7122001631500A92D20 /* EmailPassSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4D7112001631500A92D20 /* EmailPassSignupViewController.swift */; };
 		4DC4D7142001637100A92D20 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4D7132001637100A92D20 /* EditProfileViewController.swift */; };
 		4DC4D7162001650900A92D20 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4D7152001650900A92D20 /* UserSettingsViewController.swift */; };
-		4DC4D71820016BB600A92D20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DC4D71720016BB600A92D20 /* GoogleService-Info.plist */; };
 		4DC4D71B2001BF7400A92D20 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4D71A2001BF7400A92D20 /* CurrentUser.swift */; };
 		4DCAC76B20032FB500A7E423 /* UserSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAC76A20032FB500A7E423 /* UserSettingsTableViewController.swift */; };
 		4DDB9A8C200C80A9004FCD29 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DDB9A8B200C80A9004FCD29 /* Home.storyboard */; };
 		4DDC0356200D502900B075D2 /* libPushWizard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF172B7200D4A45007F2D9B /* libPushWizard.a */; };
 		4DEDB077200665D40098E6F3 /* InstakiloTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDB076200665D40098E6F3 /* InstakiloTests.swift */; };
-		4DFCA1E92003548C004F6CF6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFCA1E82003548C004F6CF6 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +76,8 @@
 		4D3F869F2008358600D738A0 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		4D3F86A120083B2C00D738A0 /* AddCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
 		4D3F86A32008476000D738A0 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		4D5C1C06200E59A0004544D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4D5C1C0A200E712D004544D8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4D6167EA2005A2ED007B9418 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		4D6167EC2005A392007B9418 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		4DB2DEE72004554500749129 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -97,7 +99,6 @@
 		4DC4D7112001631500A92D20 /* EmailPassSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPassSignupViewController.swift; sourceTree = "<group>"; };
 		4DC4D7132001637100A92D20 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		4DC4D7152001650900A92D20 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
-		4DC4D71720016BB600A92D20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4DC4D71A2001BF7400A92D20 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		4DCAC76A20032FB500A7E423 /* UserSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsTableViewController.swift; sourceTree = "<group>"; };
 		4DDB9A8B200C80A9004FCD29 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -109,7 +110,6 @@
 		4DF172B7200D4A45007F2D9B /* libPushWizard.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPushWizard.a; sourceTree = "<group>"; };
 		4DF172B8200D4A45007F2D9B /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		4DF172B9200D4A7C007F2D9B /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
-		4DFCA1E82003548C004F6CF6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ../../../../../../.Trash/ProfileViewController.swift; sourceTree = "<group>"; };
 		5EDD43B66C31382CA7B92E27 /* Pods_Instakilo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instakilo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACD17D84E1A6C0F494B4009 /* Pods-Instakilo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instakilo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Instakilo/Pods-Instakilo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -195,7 +195,7 @@
 		4DC4D709200153A100A92D20 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4DC4D71720016BB600A92D20 /* GoogleService-Info.plist */,
+				4D5C1C06200E59A0004544D8 /* GoogleService-Info.plist */,
 				4DC4D6F720014A3300A92D20 /* AppDelegate.swift */,
 				4DC4D6FE20014A3300A92D20 /* Assets.xcassets */,
 				4DC4D70020014A3300A92D20 /* LaunchScreen.storyboard */,
@@ -209,7 +209,6 @@
 			children = (
 				4D3F86A120083B2C00D738A0 /* AddCommentViewController.swift */,
 				4D02815020057DA7002A11C5 /* AddPostViewController.swift */,
-				4DFCA1E82003548C004F6CF6 /* ProfileViewController.swift */,
 				4D0AB9FF2009099A0063D615 /* ShowLikesViewController.swift */,
 				4DC4D6F920014A3300A92D20 /* LoginViewController.swift */,
 				4DC4D70A2001557100A92D20 /* SignupOptionViewController.swift */,
@@ -222,6 +221,7 @@
 				4DB2DEED2004556300749129 /* ChatViewController.swift */,
 				4DC4D7152001650900A92D20 /* UserSettingsViewController.swift */,
 				4DCAC76A20032FB500A7E423 /* UserSettingsTableViewController.swift */,
+				4D5C1C0A200E712D004544D8 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -398,9 +398,9 @@
 				4D19C726200C815300095AA0 /* Friends.storyboard in Resources */,
 				4D19C72A200C816E00095AA0 /* UserProfile.storyboard in Resources */,
 				4DDB9A8C200C80A9004FCD29 /* Home.storyboard in Resources */,
-				4DC4D71820016BB600A92D20 /* GoogleService-Info.plist in Resources */,
 				4D19C724200C814C00095AA0 /* Users.storyboard in Resources */,
 				4DC4D6FF20014A3300A92D20 /* Assets.xcassets in Resources */,
+				4D5C1C07200E59A0004544D8 /* GoogleService-Info.plist in Resources */,
 				4D19C72C200C859F00095AA0 /* Chat.storyboard in Resources */,
 				4DC4D6FD20014A3300A92D20 /* Main.storyboard in Resources */,
 			);
@@ -444,6 +444,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/TWMessageBarManager/TWMessageBarManager.framework",
@@ -461,6 +462,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TWMessageBarManager.framework",
@@ -529,12 +531,12 @@
 				4DB2DEF620046C5800749129 /* PublicUser.swift in Sources */,
 				4D3F86A02008358600D738A0 /* Comment.swift in Sources */,
 				4DB2DEEA2004555200749129 /* AllUsersViewController.swift in Sources */,
-				4DFCA1E92003548C004F6CF6 /* ProfileViewController.swift in Sources */,
 				4D0ABA002009099A0063D615 /* ShowLikesViewController.swift in Sources */,
 				4DC4D6F820014A3300A92D20 /* AppDelegate.swift in Sources */,
 				4DC4D71B2001BF7400A92D20 /* CurrentUser.swift in Sources */,
 				4DCAC76B20032FB500A7E423 /* UserSettingsTableViewController.swift in Sources */,
 				4D6167ED2005A392007B9418 /* PostTableViewCell.swift in Sources */,
+				4D5C1C0B200E712D004544D8 /* ProfileViewController.swift in Sources */,
 				4DC4D7142001637100A92D20 /* EditProfileViewController.swift in Sources */,
 				4D0ABA05200920A00063D615 /* FIRAuthService.swift in Sources */,
 				4DB2DEEE2004556300749129 /* ChatViewController.swift in Sources */,

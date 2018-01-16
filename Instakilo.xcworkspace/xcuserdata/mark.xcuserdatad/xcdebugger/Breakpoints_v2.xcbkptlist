@@ -122,13 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Instakilo/Controller/ProfileViewController.swift"
-            timestampString = "537086566.4401309"
+            timestampString = "537833239.55593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "fetchUserData(with:)"
-            landmarkType = "7">
+            startingLineNumber = "89"
+            endingLineNumber = "89">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -138,13 +136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Instakilo/Controller/ProfileViewController.swift"
-            timestampString = "537086566.440518"
+            timestampString = "537833239.556511"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "ProfileViewController"
-            landmarkType = "3">
+            startingLineNumber = "89"
+            endingLineNumber = "89">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -170,12 +166,12 @@
                   moduleName = "Instakilo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Controller/EditProfileViewController.swift"
-                  timestampString = "537749932.7388279"
+                  timestampString = "537831943.810041"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "103"
                   endingLineNumber = "103"
-                  offsetFromSymbolStart = "3616">
+                  offsetFromSymbolStart = "2955">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -185,12 +181,12 @@
                   moduleName = "Instakilo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Controller/EditProfileViewController.swift"
-                  timestampString = "537749932.744516"
+                  timestampString = "537831943.813103"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "103"
                   endingLineNumber = "103"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "4">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -266,12 +262,12 @@
                   moduleName = "Instakilo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Controller/AllUsersViewController.swift"
-                  timestampString = "537749932.761127"
+                  timestampString = "537831943.827873"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "109"
                   endingLineNumber = "109"
-                  offsetFromSymbolStart = "680">
+                  offsetFromSymbolStart = "868">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -281,12 +277,12 @@
                   moduleName = "Instakilo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Controller/AllUsersViewController.swift"
-                  timestampString = "537749932.763431"
+                  timestampString = "537831943.831414"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "103"
                   endingLineNumber = "103"
-                  offsetFromSymbolStart = "32">
+                  offsetFromSymbolStart = "36">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -522,11 +518,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Instakilo/Network/FIRAppService.swift"
-            timestampString = "537489093.894747"
+            timestampString = "537833239.557433"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "fetchFeeds(completion:)"
             landmarkType = "7">
             <Locations>
@@ -538,12 +534,12 @@
                   moduleName = "Instakilo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Network/FIRAppService.swift"
-                  timestampString = "537749932.79935"
+                  timestampString = "537831947.9526401"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "36">
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "37">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -553,12 +549,12 @@
                   moduleName = "Instakilo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Network/FIRAppService.swift"
-                  timestampString = "537749932.801715"
+                  timestampString = "537831947.957546"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "284">
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "509">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -568,12 +564,12 @@
                   moduleName = "Instakilo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Network/FIRAppService.swift"
-                  timestampString = "537749932.8037421"
+                  timestampString = "537831947.9613169"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "36">
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "32">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -585,11 +581,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Instakilo/Network/FIRAppService.swift"
-            timestampString = "537489093.895192"
+            timestampString = "537833239.557521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "fetchFeeds(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -601,11 +597,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Instakilo/Supporting Files/AppDelegate.swift"
-            timestampString = "537749932.363349"
+            timestampString = "537833239.557587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -617,13 +613,395 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Instakilo/Supporting Files/AppDelegate.swift"
-            timestampString = "537749932.363755"
+            timestampString = "537833239.557642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "AppDelegate"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Instakilo/Controller/ProfileViewController.swift"
+            timestampString = "537833239.557695"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "fetchCurrentUser()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Instakilo.ProfileViewController.(fetchCurrentUser in _9D1F0F688F74E3EB2E7B2398389E419F)() -&gt; ()"
+                  moduleName = "Instakilo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Controller/ProfileViewController.swift"
+                  timestampString = "537831948.309545"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "71">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Instakilo.CurrentUser, Swift.Optional&lt;Swift.String&gt;) -&gt; () in Instakilo.ProfileViewController.(fetchCurrentUser in _9D1F0F688F74E3EB2E7B2398389E419F)() -&gt; ()"
+                  moduleName = "Instakilo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Controller/ProfileViewController.swift"
+                  timestampString = "537831948.312861"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "47">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Instakilo/Network/FIRAppService.swift"
+            timestampString = "537833239.558044"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "fetchCurrentUserData(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Instakilo/Network/FIRAppService.swift"
+            timestampString = "537833239.558108"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "fetchCurrentUserData(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in closure #1 (__ObjC.DataSnapshot) -&gt; () in Instakilo.FIRAppService.fetchCurrentUserData(completion: (Instakilo.CurrentUser, Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Instakilo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Network/FIRAppService.swift"
+                  timestampString = "537831948.538471"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "198"
+                  endingLineNumber = "198"
+                  offsetFromSymbolStart = "77">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #1 : @autoclosure () throws -&gt; Swift.String in closure #1 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in closure #1 (__ObjC.DataSnapshot) -&gt; () in Instakilo.FIRAppService.fetchCurrentUserData(completion: (Instakilo.CurrentUser, Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Instakilo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Network/FIRAppService.swift"
+                  timestampString = "537831948.541134"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "198"
+                  endingLineNumber = "198"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #2 : @autoclosure () throws -&gt; Swift.String in closure #1 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in closure #1 (__ObjC.DataSnapshot) -&gt; () in Instakilo.FIRAppService.fetchCurrentUserData(completion: (Instakilo.CurrentUser, Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Instakilo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Network/FIRAppService.swift"
+                  timestampString = "537831948.5444191"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "198"
+                  endingLineNumber = "198"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Instakilo/Network/FIRAppService.swift"
+            timestampString = "537833239.558166"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "fetchCurrentUserData(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in closure #1 (__ObjC.DataSnapshot) -&gt; () in Instakilo.FIRAppService.fetchCurrentUserData(completion: (Instakilo.CurrentUser, Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Instakilo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Network/FIRAppService.swift"
+                  timestampString = "537831948.659023"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "205"
+                  endingLineNumber = "205"
+                  offsetFromSymbolStart = "77">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #1 : @autoclosure () throws -&gt; Swift.String in closure #2 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in closure #1 (__ObjC.DataSnapshot) -&gt; () in Instakilo.FIRAppService.fetchCurrentUserData(completion: (Instakilo.CurrentUser, Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Instakilo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Network/FIRAppService.swift"
+                  timestampString = "537831948.661603"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "205"
+                  endingLineNumber = "205"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #2 : @autoclosure () throws -&gt; Swift.String in closure #2 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in closure #1 (__ObjC.DataSnapshot) -&gt; () in Instakilo.FIRAppService.fetchCurrentUserData(completion: (Instakilo.CurrentUser, Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Instakilo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Network/FIRAppService.swift"
+                  timestampString = "537831948.664273"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "205"
+                  endingLineNumber = "205"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Instakilo/Network/FIRAppService.swift"
+            timestampString = "537833239.558224"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "fetchCurrentUserData(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Instakilo/Network/FIRAppService.swift"
+            timestampString = "537833239.558282"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "fetchCurrentUserData(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Instakilo/Network/FIRAppService.swift"
+            timestampString = "537833239.55834"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "fetchCurrentUserData(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Instakilo/Network/FIRAppService.swift"
+            timestampString = "537833239.5583971"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
+            landmarkName = "fetchPostFor(currentUser:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Instakilo/Network/FIRAppService.swift"
+            timestampString = "537833239.558449"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "fetchPostFor(currentUser:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Instakilo/Network/FIRAppService.swift"
+            timestampString = "537833239.558503"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
+            landmarkName = "fetchPostFor(currentUser:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Instakilo.FIRAppService.fetchPostFor(currentUser: Instakilo.CurrentUser, completion: (Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Instakilo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Network/FIRAppService.swift"
+                  timestampString = "537831948.908828"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "259"
+                  endingLineNumber = "259"
+                  offsetFromSymbolStart = "121">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in Instakilo.FIRAppService.fetchPostFor(currentUser: Instakilo.CurrentUser, completion: (Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Instakilo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Network/FIRAppService.swift"
+                  timestampString = "537831948.913175"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "257"
+                  endingLineNumber = "257"
+                  offsetFromSymbolStart = "21">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Instakilo/Network/FIRAppService.swift"
+            timestampString = "537833239.558557"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "fetchFollowInfoFor(currentUser:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Instakilo.FIRAppService.fetchFollowInfoFor(currentUser: Instakilo.CurrentUser, completion: (Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Instakilo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Network/FIRAppService.swift"
+                  timestampString = "537831948.9216419"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "231"
+                  endingLineNumber = "231"
+                  offsetFromSymbolStart = "121">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in Instakilo.FIRAppService.fetchFollowInfoFor(currentUser: Instakilo.CurrentUser, completion: (Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Instakilo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mark/iOS/Projects/RJT/Instakilo/Instakilo/Network/FIRAppService.swift"
+                  timestampString = "537831948.925032"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "229"
+                  endingLineNumber = "229"
+                  offsetFromSymbolStart = "21">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Instakilo/Network/FIRAppService.swift"
+            timestampString = "537833239.55861"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
+            landmarkName = "fetchFollowInfoFor(currentUser:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -17,6 +17,7 @@ target 'Instakilo' do
   pod 'Fabric', '~> 1.7.2'
   pod 'Crashlytics', '~> 3.9.3'
   pod 'UITextView+Placeholder', '~> 1.2'
+  pod 'Firebase/Messaging'
   
   # Pods for Instakilo
 

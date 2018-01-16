@@ -21,6 +21,7 @@ class FIRAppService: NSObject {
     
     typealias FetchFeedsResultHandler = ([Post]?, String?) -> ()
     typealias FetchPublicUserResultHandler = (PublicUser?, String?) -> ()
+	typealias FetchCurrentUserResultHandler = (CurrentUser, String?) -> ()
     typealias FirebaseDictionary = [String: Any]
     
     private lazy var dbRef = Database.database().reference()
@@ -158,30 +159,116 @@ class FIRAppService: NSObject {
         }
     }
 	
-//	func fetchCurrentUserData() {
-//		guard let id = Auth.auth().currentUser?.uid else { return }
-//
-//		let userRef = dbRef.child("Users")
-//		userRef.child(id).observeSingleEvent(of: .value) { (snapshot) in
-//			if let userObj = snapshot.value as? [String: Any],
-//				let fullName = userObj["Full Name"] as? String,
-//				let email = userObj["Email Address"] as? String,
-//				let bio = userObj["Bio"] as? String,
-//				let gender = userObj["Gender"] as? String,
-//				let password = userObj["Password"] as? String,
-//				let phoneNumber = userObj["Phone Number"] as? String,
-//				let profilePhotoUrlStr = userObj["Profile Photo"] as? String,
-//				let username = userObj["Username"] as? String,
-//				let website = userObj["Website"] as? String {
-//
-//				// update current User
-//				self.currentUser = CurrentUser(userId: id, email: email, fullname: fullName, password: password, profileImageUrl: URL(string: profilePhotoUrlStr), username: username, website: website, bio: bio, phoneNumber: phoneNumber, gender: gender)
-//
-//				DispatchQueue.main.async {
-//
-//				}
-//			}
-//		}
-//	}
+	func fetchCurrentUserData(completion: @escaping FetchCurrentUserResultHandler) {
+		let fetchUserGroup = DispatchGroup()
+		let fetchUserComponentsGroup = DispatchGroup()
+		var errorMessage: String?
+		
+		guard let id = Auth.auth().currentUser?.uid else { return }
+		let user = CurrentUser.shareInstance
+		
+		fetchUserGroup.enter()
+		userRef.child(id).observeSingleEvent(of: .value) { (snapshot) in
+			if let userObj = snapshot.value as? [String: Any],
+				let fullName = userObj["Full Name"] as? String,
+				let email = userObj["Email Address"] as? String,
+				let bio = userObj["Bio"] as? String,
+				let gender = userObj["Gender"] as? String,
+				let password = userObj["Password"] as? String,
+				let phoneNumber = userObj["Phone Number"] as? String,
+				let profilePhotoUrlStr = userObj["Profile Photo"] as? String,
+				let profileURL = URL(string: profilePhotoUrlStr),
+				let username = userObj["Username"] as? String,
+				let website = userObj["Website"] as? String {
+				
+				user.userId = id
+				user.fullname = fullName
+				user.email = email
+				user.bio = bio
+				user.gender = gender
+				user.password = password
+				user.phoneNumber = phoneNumber
+				user.profileImageUrl = profileURL
+				user.username = username
+				user.website = website
+				
+				fetchUserComponentsGroup.enter()
+				// need to fetch post info
+				self.fetchPostFor(currentUser: user) { (error) in
+					errorMessage = (errorMessage ?? "") + (error ?? "")
+					fetchUserComponentsGroup.leave()
+				}
+				
+				// need to fetch following and follower info
+				fetchUserComponentsGroup.enter()
+				self.fetchFollowInfoFor(currentUser: user) { (error) in
+					errorMessage = (errorMessage ?? "") + (error ?? "")
+					fetchUserComponentsGroup.leave()
+				}
+				
+				// when other componets are fetched
+				fetchUserComponentsGroup.notify(queue: .main) {
+					fetchUserGroup.leave()
+				}
+			} else {
+				errorMessage = "Error pasing user data"
+				fetchUserGroup.leave()
+			}
+		}
+		
+		
+		
+		// when everything finished
+		fetchUserGroup.notify(queue: .main) {
+			// now the currentUser should be properly configured
+			completion(user, errorMessage)
+		}
+	}
 	
+	func fetchFollowInfoFor(currentUser: CurrentUser, completion: @escaping (String?) -> ()) {
+		var errorMessage: String?
+		
+		publicUserRef.child(currentUser.userId).observeSingleEvent(of: .value) { (snapshot) in
+			if let publicUserDict = snapshot.value as? [String: Any] {
+				if let followingDict = publicUserDict["Following"] as? [String: String] {
+					for (_, followingUserId) in followingDict {
+						currentUser.following.append(followingUserId)
+					}
+				} else {
+					errorMessage = "No following users"
+				}
+				
+				if let followerDict = publicUserDict["Followers"] as? [String: String] {
+					for (_, followerId) in followerDict {
+						currentUser.follwers.append(followerId)
+					}
+				} else {
+					errorMessage = "No followers"
+				}
+			} else {
+				errorMessage = "Error pasing public user data"
+			}
+			
+			completion(errorMessage)
+		}
+	}
+	
+	func fetchPostFor(currentUser: CurrentUser, completion: @escaping (String?) -> ()) {
+		var errorMessage: String?
+		
+		postRef.observeSingleEvent(of: .value) { (snapshot) in
+			if let posts = snapshot.value as? [String: Any] {
+				for (postId, postDict) in posts {
+					if let postDictUnwrapped = postDict as? [String: Any],
+						postDictUnwrapped["User ID"] as! String == currentUser.userId {
+						currentUser.posts.append(postId)
+					}
+				}
+			} else {
+				errorMessage = "Error pasing post data"
+			}
+			
+			completion(errorMessage)
+		}
+	}
 }

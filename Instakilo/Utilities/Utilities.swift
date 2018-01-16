@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-extension UIViewController
-{
+extension UIViewController {
     // computed property
     var contents: UIViewController {
         // implicit getter
@@ -20,6 +19,8 @@ extension UIViewController
             return self
         }
     }
+	
+	
 }
 
 extension UIColor {

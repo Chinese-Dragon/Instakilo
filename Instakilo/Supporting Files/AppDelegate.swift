@@ -14,10 +14,10 @@ import TWMessageBarManager
 import Crashlytics
 import UserNotifications
 
-let appKey = "5a5d1297a3fc2768248b4727"
+//let appKey = "5a5d1297a3fc2768248b4727"
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     
     var window: UIWindow?
 	private lazy var center = UNUserNotificationCenter.current()
@@ -53,6 +53,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				UIApplication.shared.registerForRemoteNotifications()
 			}
 		}
+		Messaging.messaging().delegate = self
+		
+		// move that when new user logged in
+		Messaging.messaging().subscribe(toTopic: "Lokesh")
 	}
 	
     func applicationWillResignActive(_ application: UIApplication) {
@@ -82,7 +86,8 @@ extension AppDelegate {
 		let token = varAvgvalue.trimmingCharacters(in: CharacterSet(charactersIn: "<>")).replacingOccurrences(of: " ", with: "")
 		
 		print(token)
-		PushWizard.start(withToken: deviceToken, andAppKey: appKey, andValues: nil)
+//		PushWizard.start(withToken: deviceToken, andAppKey: appKey, andValues: nil)
+		Messaging.messaging().apnsToken = deviceToken
 	}
 	
 	func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -92,7 +97,13 @@ extension AppDelegate {
 	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 		
 		print(userInfo)
-		PushWizard.handleNotification(userInfo, processOnlyStatisticalData: false)
+		
+	}
+	
+	// Firebase
+	func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+		let token = Messaging.messaging().fcmToken
+		print("FCM token: \(token ?? "")")
 	}
 }
 

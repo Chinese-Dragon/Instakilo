@@ -9,9 +9,12 @@
 import Foundation
 import UIKit
 
-struct CurrentUser {
-	var userId: String
-	var email: String
+class CurrentUser: NSObject {
+	static let shareInstance = CurrentUser()
+	private override init() {}
+	
+	var userId: String!
+	var email: String!
 	var fullname: String?
 	var password: String?
 	var profileImageUrl: URL?
@@ -20,6 +23,9 @@ struct CurrentUser {
 	var bio: String?
 	var phoneNumber: String?
 	var gender: String?
+	var posts: [String] = []
+	var following: [String] = []
+	var follwers: [String] = []
 }
 
 

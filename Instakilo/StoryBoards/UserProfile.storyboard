@@ -113,7 +113,6 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="Setting"/>
                                                 <connections>
-                                                    <action selector="userSettings:" destination="v6k-PK-BMd" eventType="touchUpInside" id="Aon-6h-G30"/>
                                                     <segue destination="hdf-J5-kTx" kind="show" id="PYG-Te-cig">
                                                         <nil key="action"/>
                                                     </segue>
@@ -137,7 +136,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="1" green="0.99711174989999996" blue="0.98921903860000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -147,15 +146,15 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="lCt-p7-QKh"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="bioLabel" destination="s7r-Ux-Yu6" id="FFh-OW-BN1"/>
-                        <outlet property="editProfileButton" destination="iPm-Y1-gsG" id="oKo-KY-SaJ"/>
-                        <outlet property="followersLabel" destination="esw-kJ-e3W" id="Tfe-eq-Sx3"/>
-                        <outlet property="followingsLabel" destination="xuj-Ua-abS" id="RVQ-fX-fgN"/>
-                        <outlet property="fullnameLabel" destination="ixb-1l-hCc" id="aJp-I6-0ga"/>
-                        <outlet property="postsLabel" destination="0eR-rn-c1r" id="PWO-1p-NfB"/>
-                        <outlet property="profileImageView" destination="RKY-N5-f7m" id="ufc-87-Kl6"/>
-                        <outlet property="userInfoView" destination="zHu-oi-jqY" id="Cd0-hS-d77"/>
-                        <outlet property="userSettingButton" destination="bBI-GM-PvJ" id="QqX-JR-hfn"/>
+                        <outlet property="BioLabel" destination="s7r-Ux-Yu6" id="sZX-Mf-amd"/>
+                        <outlet property="editProfileButton" destination="iPm-Y1-gsG" id="ZH8-rT-bdT"/>
+                        <outlet property="followersLabelL" destination="esw-kJ-e3W" id="7as-YN-3Tg"/>
+                        <outlet property="followingLabel" destination="xuj-Ua-abS" id="PKj-Tf-S2v"/>
+                        <outlet property="fullnameLabel" destination="ixb-1l-hCc" id="ix0-an-0ON"/>
+                        <outlet property="postLabel" destination="0eR-rn-c1r" id="Mn6-L6-cX3"/>
+                        <outlet property="profileCard" destination="zHu-oi-jqY" id="zVv-tG-7mC"/>
+                        <outlet property="profileImage" destination="RKY-N5-f7m" id="hOl-UF-kSN"/>
+                        <outlet property="settingOptionButton" destination="bBI-GM-PvJ" id="XI0-bJ-k1A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9lU-IN-ogi" userLabel="First Responder" sceneMemberID="firstResponder"/>
