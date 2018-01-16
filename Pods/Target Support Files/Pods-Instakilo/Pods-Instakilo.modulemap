@@ -1,0 +1,6 @@
+framework module Pods_Instakilo {
+  umbrella header "Pods-Instakilo-umbrella.h"
+
+  export *
+  module * { export * }
+}

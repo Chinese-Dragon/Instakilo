@@ -1,0 +1,806 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A459CFB2EC89500538D6652 /* Pods_Instakilo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EDD43B66C31382CA7B92E27 /* Pods_Instakilo.framework */; };
+		4D00256A20033E6100A830FA /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D00256920033E6100A830FA /* Utilities.swift */; };
+		4D02815120057DA7002A11C5 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D02815020057DA7002A11C5 /* AddPostViewController.swift */; };
+		4D0ABA002009099A0063D615 /* ShowLikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0AB9FF2009099A0063D615 /* ShowLikesViewController.swift */; };
+		4D0ABA032009185B0063D615 /* FIRAppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0ABA022009185B0063D615 /* FIRAppService.swift */; };
+		4D0ABA05200920A00063D615 /* FIRAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0ABA04200920A00063D615 /* FIRAuthService.swift */; };
+		4D15BFBB200D2C67009C94D4 /* CurrentUserAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15BFBA200D2C67009C94D4 /* CurrentUserAccountManager.swift */; };
+		4D19C724200C814C00095AA0 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D19C723200C814C00095AA0 /* Users.storyboard */; };
+		4D19C726200C815300095AA0 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D19C725200C815300095AA0 /* Friends.storyboard */; };
+		4D19C728200C815C00095AA0 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D19C727200C815C00095AA0 /* Authentication.storyboard */; };
+		4D19C72A200C816E00095AA0 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D19C729200C816E00095AA0 /* UserProfile.storyboard */; };
+		4D19C72C200C859F00095AA0 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D19C72B200C859F00095AA0 /* Chat.storyboard */; };
+		4D3F86A02008358600D738A0 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F869F2008358600D738A0 /* Comment.swift */; };
+		4D3F86A220083B2C00D738A0 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F86A120083B2C00D738A0 /* AddCommentViewController.swift */; };
+		4D3F86A42008476000D738A0 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F86A32008476000D738A0 /* CommentTableViewCell.swift */; };
+		4D6167EB2005A2ED007B9418 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6167EA2005A2ED007B9418 /* Post.swift */; };
+		4D6167ED2005A392007B9418 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6167EC2005A392007B9418 /* PostTableViewCell.swift */; };
+		4DB2DEE82004554500749129 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2DEE72004554500749129 /* HomeViewController.swift */; };
+		4DB2DEEA2004555200749129 /* AllUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2DEE92004555200749129 /* AllUsersViewController.swift */; };
+		4DB2DEEC2004555A00749129 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2DEEB2004555A00749129 /* FriendsViewController.swift */; };
+		4DB2DEEE2004556300749129 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2DEED2004556300749129 /* ChatViewController.swift */; };
+		4DB2DEF02004688C00749129 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2DEEF2004688C00749129 /* FriendTableViewCell.swift */; };
+		4DB2DEF420046B7400749129 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2DEF320046B7400749129 /* UserTableViewCell.swift */; };
+		4DB2DEF620046C5800749129 /* PublicUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2DEF520046C5800749129 /* PublicUser.swift */; };
+		4DC4D6F820014A3300A92D20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4D6F720014A3300A92D20 /* AppDelegate.swift */; };
+		4DC4D6FA20014A3300A92D20 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4D6F920014A3300A92D20 /* LoginViewController.swift */; };
+		4DC4D6FD20014A3300A92D20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC4D6FB20014A3300A92D20 /* Main.storyboard */; };
+		4DC4D6FF20014A3300A92D20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DC4D6FE20014A3300A92D20 /* Assets.xcassets */; };
+		4DC4D70220014A3300A92D20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC4D70020014A3300A92D20 /* LaunchScreen.storyboard */; };
+		4DC4D70B2001557100A92D20 /* SignupOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4D70A2001557100A92D20 /* SignupOptionViewController.swift */; };
+		4DC4D70F200155AA00A92D20 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4D70E200155AA00A92D20 /* ResetPasswordViewController.swift */; };
+		4DC4D7122001631500A92D20 /* EmailPassSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4D7112001631500A92D20 /* EmailPassSignupViewController.swift */; };
+		4DC4D7142001637100A92D20 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4D7132001637100A92D20 /* EditProfileViewController.swift */; };
+		4DC4D7162001650900A92D20 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4D7152001650900A92D20 /* UserSettingsViewController.swift */; };
+		4DC4D71820016BB600A92D20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DC4D71720016BB600A92D20 /* GoogleService-Info.plist */; };
+		4DC4D71B2001BF7400A92D20 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4D71A2001BF7400A92D20 /* CurrentUser.swift */; };
+		4DCAC76B20032FB500A7E423 /* UserSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAC76A20032FB500A7E423 /* UserSettingsTableViewController.swift */; };
+		4DDB9A8C200C80A9004FCD29 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DDB9A8B200C80A9004FCD29 /* Home.storyboard */; };
+		4DDC0356200D502900B075D2 /* libPushWizard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF172B7200D4A45007F2D9B /* libPushWizard.a */; };
+		4DEDB077200665D40098E6F3 /* InstakiloTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDB076200665D40098E6F3 /* InstakiloTests.swift */; };
+		4DFCA1E92003548C004F6CF6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFCA1E82003548C004F6CF6 /* ProfileViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4DEDB079200665D40098E6F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DC4D6EC20014A3300A92D20 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DC4D6F320014A3300A92D20;
+			remoteInfo = Instakilo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		143F9A03208EFD2AA2ED746C /* Pods-Instakilo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instakilo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Instakilo/Pods-Instakilo.release.xcconfig"; sourceTree = "<group>"; };
+		4D00256920033E6100A830FA /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		4D02815020057DA7002A11C5 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
+		4D0AB9FF2009099A0063D615 /* ShowLikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLikesViewController.swift; sourceTree = "<group>"; };
+		4D0ABA022009185B0063D615 /* FIRAppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRAppService.swift; sourceTree = "<group>"; };
+		4D0ABA04200920A00063D615 /* FIRAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRAuthService.swift; sourceTree = "<group>"; };
+		4D15BFBA200D2C67009C94D4 /* CurrentUserAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserAccountManager.swift; sourceTree = "<group>"; };
+		4D19C723200C814C00095AA0 /* Users.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
+		4D19C725200C815300095AA0 /* Friends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
+		4D19C727200C815C00095AA0 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
+		4D19C729200C816E00095AA0 /* UserProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
+		4D19C72B200C859F00095AA0 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		4D3F869F2008358600D738A0 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		4D3F86A120083B2C00D738A0 /* AddCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
+		4D3F86A32008476000D738A0 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		4D6167EA2005A2ED007B9418 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		4D6167EC2005A392007B9418 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		4DB2DEE72004554500749129 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4DB2DEE92004555200749129 /* AllUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersViewController.swift; sourceTree = "<group>"; };
+		4DB2DEEB2004555A00749129 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		4DB2DEED2004556300749129 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		4DB2DEEF2004688C00749129 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		4DB2DEF320046B7400749129 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		4DB2DEF520046C5800749129 /* PublicUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicUser.swift; sourceTree = "<group>"; };
+		4DC4D6F420014A3300A92D20 /* Instakilo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instakilo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DC4D6F720014A3300A92D20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4DC4D6F920014A3300A92D20 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4DC4D6FC20014A3300A92D20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4DC4D6FE20014A3300A92D20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4DC4D70120014A3300A92D20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4DC4D70320014A3300A92D20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DC4D70A2001557100A92D20 /* SignupOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupOptionViewController.swift; sourceTree = "<group>"; };
+		4DC4D70E200155AA00A92D20 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		4DC4D7112001631500A92D20 /* EmailPassSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailPassSignupViewController.swift; sourceTree = "<group>"; };
+		4DC4D7132001637100A92D20 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		4DC4D7152001650900A92D20 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
+		4DC4D71720016BB600A92D20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4DC4D71A2001BF7400A92D20 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		4DCAC76A20032FB500A7E423 /* UserSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsTableViewController.swift; sourceTree = "<group>"; };
+		4DDB9A8B200C80A9004FCD29 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		4DEDB074200665D40098E6F3 /* InstakiloTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstakiloTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DEDB076200665D40098E6F3 /* InstakiloTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstakiloTests.swift; sourceTree = "<group>"; };
+		4DEDB078200665D40098E6F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DF172B2200D461A007F2D9B /* Instakilo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Instakilo.entitlements; sourceTree = "<group>"; };
+		4DF172B6200D4A45007F2D9B /* PushWizard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PushWizard.h; sourceTree = "<group>"; };
+		4DF172B7200D4A45007F2D9B /* libPushWizard.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPushWizard.a; sourceTree = "<group>"; };
+		4DF172B8200D4A45007F2D9B /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		4DF172B9200D4A7C007F2D9B /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		4DFCA1E82003548C004F6CF6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ../../../../../../.Trash/ProfileViewController.swift; sourceTree = "<group>"; };
+		5EDD43B66C31382CA7B92E27 /* Pods_Instakilo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instakilo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9ACD17D84E1A6C0F494B4009 /* Pods-Instakilo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instakilo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Instakilo/Pods-Instakilo.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4DC4D6F120014A3300A92D20 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DDC0356200D502900B075D2 /* libPushWizard.a in Frameworks */,
+				1A459CFB2EC89500538D6652 /* Pods_Instakilo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DEDB071200665D40098E6F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4D0ABA01200918410063D615 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4D0ABA022009185B0063D615 /* FIRAppService.swift */,
+				4D0ABA04200920A00063D615 /* FIRAuthService.swift */,
+				4D15BFBA200D2C67009C94D4 /* CurrentUserAccountManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		4D60BC05200320B0008F3EE9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4D6167EC2005A392007B9418 /* PostTableViewCell.swift */,
+				4DB2DEEF2004688C00749129 /* FriendTableViewCell.swift */,
+				4DB2DEF320046B7400749129 /* UserTableViewCell.swift */,
+				4D3F86A32008476000D738A0 /* CommentTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4DC4D6EB20014A3300A92D20 = {
+			isa = PBXGroup;
+			children = (
+				4DC4D6F620014A3300A92D20 /* Instakilo */,
+				4DEDB075200665D40098E6F3 /* InstakiloTests */,
+				4DC4D6F520014A3300A92D20 /* Products */,
+				F13F8592C3E0BFAABD424B65 /* Pods */,
+				CD413E6FF37511A431A166A0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4DC4D6F520014A3300A92D20 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DC4D6F420014A3300A92D20 /* Instakilo.app */,
+				4DEDB074200665D40098E6F3 /* InstakiloTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4DC4D6F620014A3300A92D20 /* Instakilo */ = {
+			isa = PBXGroup;
+			children = (
+				4DF172B2200D461A007F2D9B /* Instakilo.entitlements */,
+				4DDB9A8D200C80BF004FCD29 /* StoryBoards */,
+				4DF865E42001DFA6004C31F7 /* Model */,
+				4D60BC05200320B0008F3EE9 /* View */,
+				4DC4D71020015AF600A92D20 /* Controller */,
+				4D0ABA01200918410063D615 /* Network */,
+				4DEDB6E720054B6C003EAB12 /* Utilities */,
+				4DF172B9200D4A7C007F2D9B /* Header.h */,
+				4DF172B5200D4A45007F2D9B /* libpushwizard */,
+				4DC4D709200153A100A92D20 /* Supporting Files */,
+			);
+			path = Instakilo;
+			sourceTree = "<group>";
+		};
+		4DC4D709200153A100A92D20 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4DC4D71720016BB600A92D20 /* GoogleService-Info.plist */,
+				4DC4D6F720014A3300A92D20 /* AppDelegate.swift */,
+				4DC4D6FE20014A3300A92D20 /* Assets.xcassets */,
+				4DC4D70020014A3300A92D20 /* LaunchScreen.storyboard */,
+				4DC4D70320014A3300A92D20 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4DC4D71020015AF600A92D20 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4D3F86A120083B2C00D738A0 /* AddCommentViewController.swift */,
+				4D02815020057DA7002A11C5 /* AddPostViewController.swift */,
+				4DFCA1E82003548C004F6CF6 /* ProfileViewController.swift */,
+				4D0AB9FF2009099A0063D615 /* ShowLikesViewController.swift */,
+				4DC4D6F920014A3300A92D20 /* LoginViewController.swift */,
+				4DC4D70A2001557100A92D20 /* SignupOptionViewController.swift */,
+				4DC4D70E200155AA00A92D20 /* ResetPasswordViewController.swift */,
+				4DC4D7112001631500A92D20 /* EmailPassSignupViewController.swift */,
+				4DC4D7132001637100A92D20 /* EditProfileViewController.swift */,
+				4DB2DEE72004554500749129 /* HomeViewController.swift */,
+				4DB2DEE92004555200749129 /* AllUsersViewController.swift */,
+				4DB2DEEB2004555A00749129 /* FriendsViewController.swift */,
+				4DB2DEED2004556300749129 /* ChatViewController.swift */,
+				4DC4D7152001650900A92D20 /* UserSettingsViewController.swift */,
+				4DCAC76A20032FB500A7E423 /* UserSettingsTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4DDB9A8D200C80BF004FCD29 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				4DC4D6FB20014A3300A92D20 /* Main.storyboard */,
+				4DDB9A8B200C80A9004FCD29 /* Home.storyboard */,
+				4D19C723200C814C00095AA0 /* Users.storyboard */,
+				4D19C725200C815300095AA0 /* Friends.storyboard */,
+				4D19C727200C815C00095AA0 /* Authentication.storyboard */,
+				4D19C729200C816E00095AA0 /* UserProfile.storyboard */,
+				4D19C72B200C859F00095AA0 /* Chat.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		4DEDB075200665D40098E6F3 /* InstakiloTests */ = {
+			isa = PBXGroup;
+			children = (
+				4DEDB076200665D40098E6F3 /* InstakiloTests.swift */,
+				4DEDB078200665D40098E6F3 /* Info.plist */,
+			);
+			path = InstakiloTests;
+			sourceTree = "<group>";
+		};
+		4DEDB6E720054B6C003EAB12 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4D00256920033E6100A830FA /* Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4DF172B5200D4A45007F2D9B /* libpushwizard */ = {
+			isa = PBXGroup;
+			children = (
+				4DF172B6200D4A45007F2D9B /* PushWizard.h */,
+				4DF172B7200D4A45007F2D9B /* libPushWizard.a */,
+				4DF172B8200D4A45007F2D9B /* readme.txt */,
+			);
+			path = libpushwizard;
+			sourceTree = "<group>";
+		};
+		4DF865E42001DFA6004C31F7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4DB2DEF520046C5800749129 /* PublicUser.swift */,
+				4D6167EA2005A2ED007B9418 /* Post.swift */,
+				4DC4D71A2001BF7400A92D20 /* CurrentUser.swift */,
+				4D3F869F2008358600D738A0 /* Comment.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CD413E6FF37511A431A166A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5EDD43B66C31382CA7B92E27 /* Pods_Instakilo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F13F8592C3E0BFAABD424B65 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9ACD17D84E1A6C0F494B4009 /* Pods-Instakilo.debug.xcconfig */,
+				143F9A03208EFD2AA2ED746C /* Pods-Instakilo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4DC4D6F320014A3300A92D20 /* Instakilo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DC4D70620014A3300A92D20 /* Build configuration list for PBXNativeTarget "Instakilo" */;
+			buildPhases = (
+				F2AFFA8A21CE49E57E87F00F /* [CP] Check Pods Manifest.lock */,
+				4DC4D6F020014A3300A92D20 /* Sources */,
+				4DC4D6F120014A3300A92D20 /* Frameworks */,
+				4DC4D6F220014A3300A92D20 /* Resources */,
+				5C4694A6A1DE6E5FB14109FF /* [CP] Embed Pods Frameworks */,
+				82BE31AB928EBCCCEE0097F2 /* [CP] Copy Pods Resources */,
+				4DADE807200415E800B43B6E /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Instakilo;
+			productName = Instakilo;
+			productReference = 4DC4D6F420014A3300A92D20 /* Instakilo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4DEDB073200665D40098E6F3 /* InstakiloTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DEDB07D200665D40098E6F3 /* Build configuration list for PBXNativeTarget "InstakiloTests" */;
+			buildPhases = (
+				4DEDB070200665D40098E6F3 /* Sources */,
+				4DEDB071200665D40098E6F3 /* Frameworks */,
+				4DEDB072200665D40098E6F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DEDB07A200665D40098E6F3 /* PBXTargetDependency */,
+			);
+			name = InstakiloTests;
+			productName = InstakiloTests;
+			productReference = 4DEDB074200665D40098E6F3 /* InstakiloTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4DC4D6EC20014A3300A92D20 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Mark;
+				TargetAttributes = {
+					4DC4D6F320014A3300A92D20 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					4DEDB073200665D40098E6F3 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4DC4D6F320014A3300A92D20;
+					};
+				};
+			};
+			buildConfigurationList = 4DC4D6EF20014A3300A92D20 /* Build configuration list for PBXProject "Instakilo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4DC4D6EB20014A3300A92D20;
+			productRefGroup = 4DC4D6F520014A3300A92D20 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4DC4D6F320014A3300A92D20 /* Instakilo */,
+				4DEDB073200665D40098E6F3 /* InstakiloTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4DC4D6F220014A3300A92D20 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D19C728200C815C00095AA0 /* Authentication.storyboard in Resources */,
+				4DC4D70220014A3300A92D20 /* LaunchScreen.storyboard in Resources */,
+				4D19C726200C815300095AA0 /* Friends.storyboard in Resources */,
+				4D19C72A200C816E00095AA0 /* UserProfile.storyboard in Resources */,
+				4DDB9A8C200C80A9004FCD29 /* Home.storyboard in Resources */,
+				4DC4D71820016BB600A92D20 /* GoogleService-Info.plist in Resources */,
+				4D19C724200C814C00095AA0 /* Users.storyboard in Resources */,
+				4DC4D6FF20014A3300A92D20 /* Assets.xcassets in Resources */,
+				4D19C72C200C859F00095AA0 /* Chat.storyboard in Resources */,
+				4DC4D6FD20014A3300A92D20 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DEDB072200665D40098E6F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4DADE807200415E800B43B6E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
+		};
+		5C4694A6A1DE6E5FB14109FF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Instakilo/Pods-Instakilo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/TWMessageBarManager/TWMessageBarManager.framework",
+				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TWMessageBarManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Instakilo/Pods-Instakilo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82BE31AB928EBCCCEE0097F2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Instakilo/Pods-Instakilo-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Instakilo/Pods-Instakilo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2AFFA8A21CE49E57E87F00F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Instakilo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4DC4D6F020014A3300A92D20 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DC4D70B2001557100A92D20 /* SignupOptionViewController.swift in Sources */,
+				4DC4D6FA20014A3300A92D20 /* LoginViewController.swift in Sources */,
+				4DC4D7122001631500A92D20 /* EmailPassSignupViewController.swift in Sources */,
+				4D02815120057DA7002A11C5 /* AddPostViewController.swift in Sources */,
+				4DC4D70F200155AA00A92D20 /* ResetPasswordViewController.swift in Sources */,
+				4D3F86A220083B2C00D738A0 /* AddCommentViewController.swift in Sources */,
+				4DB2DEEC2004555A00749129 /* FriendsViewController.swift in Sources */,
+				4DC4D7162001650900A92D20 /* UserSettingsViewController.swift in Sources */,
+				4D15BFBB200D2C67009C94D4 /* CurrentUserAccountManager.swift in Sources */,
+				4D00256A20033E6100A830FA /* Utilities.swift in Sources */,
+				4DB2DEF620046C5800749129 /* PublicUser.swift in Sources */,
+				4D3F86A02008358600D738A0 /* Comment.swift in Sources */,
+				4DB2DEEA2004555200749129 /* AllUsersViewController.swift in Sources */,
+				4DFCA1E92003548C004F6CF6 /* ProfileViewController.swift in Sources */,
+				4D0ABA002009099A0063D615 /* ShowLikesViewController.swift in Sources */,
+				4DC4D6F820014A3300A92D20 /* AppDelegate.swift in Sources */,
+				4DC4D71B2001BF7400A92D20 /* CurrentUser.swift in Sources */,
+				4DCAC76B20032FB500A7E423 /* UserSettingsTableViewController.swift in Sources */,
+				4D6167ED2005A392007B9418 /* PostTableViewCell.swift in Sources */,
+				4DC4D7142001637100A92D20 /* EditProfileViewController.swift in Sources */,
+				4D0ABA05200920A00063D615 /* FIRAuthService.swift in Sources */,
+				4DB2DEEE2004556300749129 /* ChatViewController.swift in Sources */,
+				4D0ABA032009185B0063D615 /* FIRAppService.swift in Sources */,
+				4D3F86A42008476000D738A0 /* CommentTableViewCell.swift in Sources */,
+				4DB2DEE82004554500749129 /* HomeViewController.swift in Sources */,
+				4DB2DEF420046B7400749129 /* UserTableViewCell.swift in Sources */,
+				4DB2DEF02004688C00749129 /* FriendTableViewCell.swift in Sources */,
+				4D6167EB2005A2ED007B9418 /* Post.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DEDB070200665D40098E6F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DEDB077200665D40098E6F3 /* InstakiloTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4DEDB07A200665D40098E6F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DC4D6F320014A3300A92D20 /* Instakilo */;
+			targetProxy = 4DEDB079200665D40098E6F3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4DC4D6FB20014A3300A92D20 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DC4D6FC20014A3300A92D20 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4DC4D70020014A3300A92D20 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DC4D70120014A3300A92D20 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4DC4D70420014A3300A92D20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4DC4D70520014A3300A92D20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4DC4D70720014A3300A92D20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9ACD17D84E1A6C0F494B4009 /* Pods-Instakilo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Instakilo/Instakilo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RQAE768Z9N;
+				INFOPLIST_FILE = "$(SRCROOT)/Instakilo/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Instakilo/libpushwizard",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Marko.Instakilo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = Instakilo/Header.h;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4DC4D70820014A3300A92D20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 143F9A03208EFD2AA2ED746C /* Pods-Instakilo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Instakilo/Instakilo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RQAE768Z9N;
+				INFOPLIST_FILE = "$(SRCROOT)/Instakilo/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Instakilo/libpushwizard",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Marko.Instakilo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = Instakilo/Header.h;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4DEDB07B200665D40098E6F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 88F5VS94FS;
+				INFOPLIST_FILE = InstakiloTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HungryFool.InstakiloTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Instakilo.app/Instakilo";
+			};
+			name = Debug;
+		};
+		4DEDB07C200665D40098E6F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 88F5VS94FS;
+				INFOPLIST_FILE = InstakiloTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HungryFool.InstakiloTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Instakilo.app/Instakilo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4DC4D6EF20014A3300A92D20 /* Build configuration list for PBXProject "Instakilo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DC4D70420014A3300A92D20 /* Debug */,
+				4DC4D70520014A3300A92D20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DC4D70620014A3300A92D20 /* Build configuration list for PBXNativeTarget "Instakilo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DC4D70720014A3300A92D20 /* Debug */,
+				4DC4D70820014A3300A92D20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DEDB07D200665D40098E6F3 /* Build configuration list for PBXNativeTarget "InstakiloTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DEDB07B200665D40098E6F3 /* Debug */,
+				4DEDB07C200665D40098E6F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4DC4D6EC20014A3300A92D20 /* Project object */;
+}
