@@ -11,6 +11,7 @@ import SVProgressHUD
 import FirebaseAuth
 import FirebaseDatabase
 import TWMessageBarManager
+import FirebaseMessaging
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var EmailTextField: UITextField!
@@ -74,7 +75,7 @@ class LoginViewController: UIViewController {
         
         if validateInputs(), let email = inputEmail, let password = inputPasssWord {
             Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-                guard error == nil else {
+                guard error == nil, let user = user else {
                     // TODO : SHow message
                     TWMessageBarManager().showMessage(withTitle: "Error", description: error!.localizedDescription, type: .error)
                     return
@@ -84,6 +85,7 @@ class LoginViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.cleanUp()
                     self.performSegue(withIdentifier: "SigninToApp", sender: nil)
+					Messaging.messaging().subscribe(toTopic: user.uid)
                 }
             }
         }

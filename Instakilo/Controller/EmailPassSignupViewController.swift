@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import TWMessageBarManager
 import SVProgressHUD
+import FirebaseMessaging
 
 class EmailPassSignupViewController: UIViewController {
     @IBOutlet weak var EmailTextField: UITextField!
@@ -124,7 +125,7 @@ class EmailPassSignupViewController: UIViewController {
                     // Successfully registed, navigate to homeVC
                     if let _ = Auth.auth().currentUser {
                         self.performSegue(withIdentifier: "SignupToApp", sender: nil)
-                        self.navigationController?.popToRootViewController(animated: true)
+						Messaging.messaging().subscribe(toTopic: unwrappedUser.uid)
                     }
                 }
             }

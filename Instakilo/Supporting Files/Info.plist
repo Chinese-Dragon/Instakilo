@@ -23,7 +23,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.316452959768-9gog1ga9et32593ancgpjuqod55dfeh9</string>
+				<string>com.googleusercontent.apps.316452959768-acdbth9p4q978k15odoc70790a50l5h4</string>
 			</array>
 		</dict>
 		<dict>
@@ -64,6 +64,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -14,6 +14,7 @@ import TWMessageBarManager
 import SVProgressHUD
 import FacebookLogin
 import FBSDKLoginKit
+import FirebaseMessaging
 
 class SignupOptionViewController: UIViewController {
     
@@ -96,6 +97,7 @@ class SignupOptionViewController: UIViewController {
                 // Successfully registed, navigate to homeVC
                 if let _ = Auth.auth().currentUser {
                     self.performSegue(withIdentifier: "OAuthToApp", sender: nil)
+					Messaging.messaging().subscribe(toTopic: user.uid)
                 }
             }
         }

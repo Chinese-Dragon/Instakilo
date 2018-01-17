@@ -13,11 +13,12 @@ import FBSDKLoginKit
 import TWMessageBarManager
 import Crashlytics
 import UserNotifications
+import FirebaseMessaging
 
 //let appKey = "5a5d1297a3fc2768248b4727"
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
 	private lazy var center = UNUserNotificationCenter.current()
@@ -54,9 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 			}
 		}
 		Messaging.messaging().delegate = self
-		
-		// move that when new user logged in
-		Messaging.messaging().subscribe(toTopic: "Lokesh")
 	}
 	
     func applicationWillResignActive(_ application: UIApplication) {
@@ -77,9 +75,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     }
 }
 
-// MARK: - Remote Notification
+
 // ************************** For remote notification *************************
-extension AppDelegate {
+// MARK: - Remote Notification
+extension AppDelegate: MessagingDelegate {
 	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 		let varAvgvalue = String(format: "%@", deviceToken as CVarArg)
 		
@@ -94,17 +93,19 @@ extension AppDelegate {
 		print(error.localizedDescription)
 	}
 	
+
 	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 		
 		print(userInfo)
 		
 	}
-	
+
 	// Firebase
 	func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
 		let token = Messaging.messaging().fcmToken
 		print("FCM token: \(token ?? "")")
 	}
+	
 }
 
 
