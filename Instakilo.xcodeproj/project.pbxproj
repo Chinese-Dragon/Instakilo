@@ -22,7 +22,6 @@
 		4D3F86A02008358600D738A0 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F869F2008358600D738A0 /* Comment.swift */; };
 		4D3F86A220083B2C00D738A0 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F86A120083B2C00D738A0 /* AddCommentViewController.swift */; };
 		4D3F86A42008476000D738A0 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F86A32008476000D738A0 /* CommentTableViewCell.swift */; };
-		4D5C1C07200E59A0004544D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D5C1C06200E59A0004544D8 /* GoogleService-Info.plist */; };
 		4D5C1C0B200E712D004544D8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C1C0A200E712D004544D8 /* ProfileViewController.swift */; };
 		4D6167EB2005A2ED007B9418 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6167EA2005A2ED007B9418 /* Post.swift */; };
 		4D6167ED2005A392007B9418 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6167EC2005A392007B9418 /* PostTableViewCell.swift */; };
@@ -33,6 +32,8 @@
 		4DB2DEF02004688C00749129 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2DEEF2004688C00749129 /* FriendTableViewCell.swift */; };
 		4DB2DEF420046B7400749129 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2DEF320046B7400749129 /* UserTableViewCell.swift */; };
 		4DB2DEF620046C5800749129 /* PublicUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB2DEF520046C5800749129 /* PublicUser.swift */; };
+		4DC3D2B5200FA61D00F742E5 /* MsgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC3D2B4200FA61C00F742E5 /* MsgTableViewCell.swift */; };
+		4DC3D2B7200FA72D00F742E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DC3D2B6200FA72D00F742E5 /* GoogleService-Info.plist */; };
 		4DC4D6F820014A3300A92D20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4D6F720014A3300A92D20 /* AppDelegate.swift */; };
 		4DC4D6FA20014A3300A92D20 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4D6F920014A3300A92D20 /* LoginViewController.swift */; };
 		4DC4D6FD20014A3300A92D20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC4D6FB20014A3300A92D20 /* Main.storyboard */; };
@@ -76,7 +77,6 @@
 		4D3F869F2008358600D738A0 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		4D3F86A120083B2C00D738A0 /* AddCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
 		4D3F86A32008476000D738A0 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
-		4D5C1C06200E59A0004544D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4D5C1C0A200E712D004544D8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4D6167EA2005A2ED007B9418 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		4D6167EC2005A392007B9418 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
@@ -87,6 +87,8 @@
 		4DB2DEEF2004688C00749129 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		4DB2DEF320046B7400749129 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		4DB2DEF520046C5800749129 /* PublicUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicUser.swift; sourceTree = "<group>"; };
+		4DC3D2B4200FA61C00F742E5 /* MsgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MsgTableViewCell.swift; path = ../../../RJT_13_Demo/RJT_13_Demo/MsgTableViewCell.swift; sourceTree = "<group>"; };
+		4DC3D2B6200FA72D00F742E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4DC4D6F420014A3300A92D20 /* Instakilo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instakilo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC4D6F720014A3300A92D20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DC4D6F920014A3300A92D20 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 		4D60BC05200320B0008F3EE9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4DC3D2B4200FA61C00F742E5 /* MsgTableViewCell.swift */,
 				4D6167EC2005A392007B9418 /* PostTableViewCell.swift */,
 				4DB2DEEF2004688C00749129 /* FriendTableViewCell.swift */,
 				4DB2DEF320046B7400749129 /* UserTableViewCell.swift */,
@@ -195,7 +198,7 @@
 		4DC4D709200153A100A92D20 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4D5C1C06200E59A0004544D8 /* GoogleService-Info.plist */,
+				4DC3D2B6200FA72D00F742E5 /* GoogleService-Info.plist */,
 				4DC4D6F720014A3300A92D20 /* AppDelegate.swift */,
 				4DC4D6FE20014A3300A92D20 /* Assets.xcassets */,
 				4DC4D70020014A3300A92D20 /* LaunchScreen.storyboard */,
@@ -400,7 +403,7 @@
 				4DDB9A8C200C80A9004FCD29 /* Home.storyboard in Resources */,
 				4D19C724200C814C00095AA0 /* Users.storyboard in Resources */,
 				4DC4D6FF20014A3300A92D20 /* Assets.xcassets in Resources */,
-				4D5C1C07200E59A0004544D8 /* GoogleService-Info.plist in Resources */,
+				4DC3D2B7200FA72D00F742E5 /* GoogleService-Info.plist in Resources */,
 				4D19C72C200C859F00095AA0 /* Chat.storyboard in Resources */,
 				4DC4D6FD20014A3300A92D20 /* Main.storyboard in Resources */,
 			);
@@ -545,6 +548,7 @@
 				4DB2DEE82004554500749129 /* HomeViewController.swift in Sources */,
 				4DB2DEF420046B7400749129 /* UserTableViewCell.swift in Sources */,
 				4DB2DEF02004688C00749129 /* FriendTableViewCell.swift in Sources */,
+				4DC3D2B5200FA61D00F742E5 /* MsgTableViewCell.swift in Sources */,
 				4D6167EB2005A2ED007B9418 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
