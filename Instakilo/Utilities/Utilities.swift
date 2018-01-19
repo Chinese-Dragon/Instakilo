@@ -20,7 +20,13 @@ extension UIViewController {
         }
     }
 	
+	func showIndicators() {
+		UIApplication.shared.isNetworkActivityIndicatorVisible = true
+	}
 	
+	func hideIndicators() {
+		UIApplication.shared.isNetworkActivityIndicatorVisible = false
+	}
 }
 
 extension UIColor {
@@ -62,4 +68,13 @@ extension Double {
         
         return "JUST NOW"
     }
+	
+	var readableTime: String {
+		let date = Date(timeIntervalSince1970: self)
+		let formatter = DateFormatter()
+		formatter.dateFormat = "MMM d, h:mm a"
+		return formatter.string(from: date)
+	}
 }
+
+

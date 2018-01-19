@@ -22,29 +22,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
 	private lazy var center = UNUserNotificationCenter.current()
-	
     private lazy var userRef = Database.database().reference().child("Users")
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+		
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         Fabric.with([Crashlytics.self])
         
-        let authStoryboard = UIStoryboard(name: "Authentication", bundle: Bundle.main)
-		let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        if let _ = Auth.auth().currentUser {
-            window?.rootViewController = mainStoryBoard.instantiateViewController(withIdentifier: "AppTabBarController")
-        } else {
-            window?.rootViewController = authStoryboard.instantiateViewController(withIdentifier: "MainNavigationController")
-        }
-        
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-		
         pushNotificationSetting()
+		
+		findEnterPoint()
+		
+		// NOTE: check how did we start the app (handle tap notification when not running)
+		if let userInfo = launchOptions?[.remoteNotification] as? [String: Any] {
+			print(userInfo)
+			navToChat(with: userInfo)
+		}
 		
         return true
     }
+	
+	private func findEnterPoint() {
+		let authStoryboard = UIStoryboard(name: "Authentication", bundle: Bundle.main)
+		let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+		if let _ = Auth.auth().currentUser {
+			window?.rootViewController = mainStoryBoard.instantiateViewController(withIdentifier: "AppTabBarController")
+		} else {
+			window?.rootViewController = authStoryboard.instantiateViewController(withIdentifier: "MainNavigationController")
+		}
+	}
 	
 	private func pushNotificationSetting() {
 		// Push Notification Settings
@@ -55,6 +62,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			}
 		}
 		Messaging.messaging().delegate = self
+		
+		// need to set to false when enter background for saving bandwidth
+		Messaging.messaging().shouldEstablishDirectChannel = true
+		
 	}
 	
     func applicationWillResignActive(_ application: UIApplication) {
@@ -85,7 +96,6 @@ extension AppDelegate: MessagingDelegate {
 		let token = varAvgvalue.trimmingCharacters(in: CharacterSet(charactersIn: "<>")).replacingOccurrences(of: " ", with: "")
 		
 		print(token)
-//		PushWizard.start(withToken: deviceToken, andAppKey: appKey, andValues: nil)
 		Messaging.messaging().apnsToken = deviceToken
 	}
 	
@@ -98,6 +108,8 @@ extension AppDelegate: MessagingDelegate {
 		
 		print(userInfo)
 		
+		completionHandler(.newData)
+		
 	}
 
 	// Firebase
@@ -106,12 +118,54 @@ extension AppDelegate: MessagingDelegate {
 		print("FCM token: \(token ?? "")")
 	}
 	
-}
+	
+	// NOTE: handle notification when in foreground
+	func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 
+		completionHandler(
+			[UNNotificationPresentationOptions.alert,
+			 UNNotificationPresentationOptions.sound,
+			 UNNotificationPresentationOptions.badge])
+	}
+}
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
 	func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
 		
-		// handle notification
+		// NOTE: handle tap notification when in background
+		// if we have notification means the user is alreayd logged in,
+		// we just need to
+		if let userInfo = response.notification.request.content.userInfo as? [String : Any] {
+			navToChat(with: userInfo)
+		}
+		
+		completionHandler()
+	}
+	
+	func navToChat(with userInfo: [String: Any]) {
+		// Getting user info
+		print(userInfo)
+		let chatStoryboard = UIStoryboard(name: "Chat", bundle: Bundle.main)
+		if let senderId = userInfo["gcm.notification.sender"] as? String,
+			let targetVC = chatStoryboard.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController,
+			let root = window?.rootViewController as? UITabBarController,
+			let chatNav = root.viewControllers?[3] as? UINavigationController,
+			let friendsVC = (root.viewControllers?[1] as? UINavigationController)?.contents as? FriendsViewController {
+			
+			var receiver: PublicUser!
+			for friend in friendsVC.friends {
+				if friend.id == senderId {
+					receiver = friend
+				}
+			}
+			
+			if receiver == nil {
+				receiver =  PublicUser(fullname: nil, id: senderId, username: nil, photoUrl: nil, following: nil, followers: nil)
+			}
+			
+			targetVC.receiver = receiver
+			chatNav.pushViewController(targetVC, animated: true)
+			root.selectedIndex = 3
+		}
 	}
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FriendTableViewCell: UITableViewCell {
     @IBOutlet weak var fullnameLabel: UILabel!
@@ -21,4 +22,10 @@ class FriendTableViewCell: UITableViewCell {
         friendImageVIew.layer.masksToBounds = true
         backgroundColor = UIColor.background
     }
+	
+	func configure(with friend: PublicUser) {
+		self.friendImageVIew.sd_setImage(with: friend.photoUrl, completed: nil)
+		self.usernameLabel.text = friend.username
+		self.fullnameLabel.text = friend.fullname
+	}
 }

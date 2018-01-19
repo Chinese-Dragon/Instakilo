@@ -7,69 +7,62 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
 import SVProgressHUD
 
 class FriendsViewController: UIViewController {
 
     @IBOutlet weak var tableview: UITableView!
     
-    private var dbRef = Database.database().reference()
-
     var friends = [PublicUser]() {
         didSet {
             tableview.reloadData()
         }
     }
-    
+	
+	private var refreshControl = UIRefreshControl()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Load Friend VC")
-        tableview.rowHeight = UITableViewAutomaticDimension
-        tableview.estimatedRowHeight = 70
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "patternBackground")!)
+		print("Load Friend VC")
+		setupUI()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        fetchFriends()
-    }
-    
-    private func fetchFriends() {
-        let currentUid = Auth.auth().currentUser!.uid
-        let publicUserRef = dbRef.child("Public Users")
-        self.friends.removeAll()
-        
-        publicUserRef.child(currentUid).child("Following").queryOrderedByKey().observeSingleEvent(of: .value) { (snapshot) in
-            if let friends = snapshot.value as? [String: String] {
-                // if we have friends
-                for (_, friendId) in friends {
-                    // get each friend info and construct an obj out of it
-                    self.constrcutUser(with: friendId)
-                }
-            } else {
-                print("You have no friends")
-            }
-        }
-    }
-    
-    private func constrcutUser(with id: String){
-        let publicUserRef = dbRef.child("Public Users")
-        publicUserRef.child(id).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            if let usersDict = snapshot.value as? [String: Any] {
-            
-                let fullname = usersDict["Full Name"] as! String
-                let username = usersDict["Username"] as! String
-                let photoUrlStr = usersDict["Profile Photo"] as! String
-                
-                self.friends.append(PublicUser(fullname: fullname, id: id, username: username, photoUrl: URL(string: photoUrlStr), following: nil, followers: nil))
-            }
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		fetchFriends()
+	}
+	
+	private func setupUI() {
+		refreshControl.isEnabled = true
+		refreshControl.tintColor = UIColor.red
+		refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
+		
+		tableview.rowHeight = UITableViewAutomaticDimension
+		tableview.estimatedRowHeight = 70
+		view.backgroundColor = UIColor(patternImage: UIImage(named: "patternBackground")!)
+		tableview.addSubview(refreshControl)
+		
+	}
+
+	private func fetchFriends() {
+		showIndicators()
+		FIRAppService.shareInstance.fetchFriends { (users, error) in
+			DispatchQueue.main.async {
+				self.hideIndicators()
+				self.refreshControl.endRefreshing()
+			}
+			
+			guard let friends = users, error == nil else {
+				print(error!)
+				return
+			}
+			self.friends = friends
+		}
+	}
+	
+	@objc func refreshAction() {
+		fetchFriends()
+	}
 }
 
 extension FriendsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -79,12 +72,25 @@ extension FriendsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendTableViewCell
-        let currentFriend = friends[indexPath.row]
-        
-        cell.friendImageVIew.sd_setImage(with: currentFriend.photoUrl, completed: nil)
-        cell.usernameLabel.text = currentFriend.username
-        cell.fullnameLabel.text = currentFriend.fullname
-        
+		
+		let currentFriend = friends[indexPath.row]
+		cell.configure(with: currentFriend)
+		
         return cell
     }
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let currentFriend = friends[indexPath.row]
+
+		// swift to chattableview controller
+		tabBarController?.selectedIndex = 3
+		
+		// push a chatviewcontroller onto it's navagation controller stack
+		if let chatNav = tabBarController?.childViewControllers[3] as? UINavigationController{
+			let chatStoryboard = UIStoryboard(name: "Chat", bundle: Bundle.main)
+			let chatVc = chatStoryboard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+			chatNav.pushViewController(chatVc, animated: true)
+			chatVc.receiver = currentFriend
+		}
+	}
 }

@@ -31,6 +31,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         fetchFeeds()
+		
+		// TODO: move to splash screen
+		fireService.fetchCurrentUserData(completion: nil)
     }
     
     @objc func refreshAction() {
@@ -62,19 +65,11 @@ private extension HomeViewController {
             if let unwrappedPost = posts, error == nil {
                 DispatchQueue.main.async {
                     self.hideIndicators()
+					self.refreshControl.endRefreshing()
                     self.posts = unwrappedPost
                 }
             }
         }
-    }
-    
-    func showIndicators() {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    }
-    
-    func hideIndicators() {
-        refreshControl.endRefreshing()
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
 }
 

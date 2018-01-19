@@ -83,27 +83,37 @@
                                             <action selector="login:" destination="LMw-IW-ZL5" eventType="touchUpInside" id="slo-lA-mdD"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4MD-Y2-ZgM">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYv-46-pFQ">
                                         <rect key="frame" x="0.0" y="157.5" width="300" height="42.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your login details?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="bLr-yM-CDy">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="42.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUE-T6-ahI">
-                                                <rect key="frame" x="150" y="0.0" width="150" height="42.5"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                                <state key="normal" title="Get help signing in."/>
-                                                <connections>
-                                                    <segue destination="QqU-tJ-lQC" kind="show" identifier="resetPassword" id="9xy-ir-OfO">
-                                                        <nil key="action"/>
-                                                    </segue>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hc-nU-2PY">
+                                                <rect key="frame" x="20" y="8" width="260.5" height="27"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your login details?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="bLr-yM-CDy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="143.5" height="27"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUE-T6-ahI">
+                                                        <rect key="frame" x="143.5" y="0.0" width="117" height="27"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                        <state key="normal" title="Get help signing in."/>
+                                                        <connections>
+                                                            <segue destination="QqU-tJ-lQC" kind="show" identifier="resetPassword" id="9xy-ir-OfO">
+                                                                <nil key="action"/>
+                                                            </segue>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
-                                    </stackView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="2hc-nU-2PY" firstAttribute="centerY" secondItem="BYv-46-pFQ" secondAttribute="centerY" id="FTi-Bn-jcL"/>
+                                            <constraint firstItem="2hc-nU-2PY" firstAttribute="centerX" secondItem="BYv-46-pFQ" secondAttribute="centerX" id="Yhs-vJ-c2a"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headerTextImage" translatesAutoresizingMaskIntoConstraints="NO" id="LyS-je-6NR">
@@ -138,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BQU-6T-JOL" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1031" y="-274"/>
+            <point key="canvasLocation" x="-1031.2" y="-274.81259370314842"/>
         </scene>
         <!--Reset Password View Controller-->
         <scene sceneID="Loc-uH-x7g">
@@ -244,15 +254,15 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ih3-vZ-O4m">
                                 <rect key="frame" x="38" y="297" width="300" height="167"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="v5C-NE-oua">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v5C-NE-oua">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="83.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xso-aw-vJy" customClass="GIDSignInButton">
-                                                <rect key="frame" x="0.0" y="0.0" width="300" height="42"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="53"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEu-3e-HYT" customClass="FBSDKLoginButton">
-                                                <rect key="frame" x="0.0" y="42" width="300" height="41.5"/>
+                                                <rect key="frame" x="0.0" y="53" width="300" height="30.5"/>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -491,6 +501,6 @@
         <image name="line" width="80" height="80"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WVd-FN-VoB"/>
+        <segue reference="anW-j7-TA0"/>
     </inferredMetricsTieBreakers>
 </document>

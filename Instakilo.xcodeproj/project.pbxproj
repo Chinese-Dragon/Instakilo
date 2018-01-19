@@ -15,6 +15,10 @@
 		4D0ABA05200920A00063D615 /* FIRAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0ABA04200920A00063D615 /* FIRAuthService.swift */; };
 		4D15BFBB200D2C67009C94D4 /* CurrentUserAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15BFBA200D2C67009C94D4 /* CurrentUserAccountManager.swift */; };
 		4D16602D200FA9F000950239 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D16602C200FA9F000950239 /* GoogleService-Info.plist */; };
+		4D16602F200FC9FD00950239 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D16602E200FC9FD00950239 /* Message.swift */; };
+		4D166031200FD17100950239 /* ChatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D166030200FD17100950239 /* ChatsTableViewController.swift */; };
+		4D166033200FD1B300950239 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D166032200FD1B300950239 /* ChatTableViewCell.swift */; };
+		4D166035200FD69A00950239 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D166034200FD69A00950239 /* Conversation.swift */; };
 		4D19C724200C814C00095AA0 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D19C723200C814C00095AA0 /* Users.storyboard */; };
 		4D19C726200C815300095AA0 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D19C725200C815300095AA0 /* Friends.storyboard */; };
 		4D19C728200C815C00095AA0 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D19C727200C815C00095AA0 /* Authentication.storyboard */; };
@@ -70,6 +74,10 @@
 		4D0ABA04200920A00063D615 /* FIRAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRAuthService.swift; sourceTree = "<group>"; };
 		4D15BFBA200D2C67009C94D4 /* CurrentUserAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserAccountManager.swift; sourceTree = "<group>"; };
 		4D16602C200FA9F000950239 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4D16602E200FC9FD00950239 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		4D166030200FD17100950239 /* ChatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTableViewController.swift; sourceTree = "<group>"; };
+		4D166032200FD1B300950239 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		4D166034200FD69A00950239 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		4D19C723200C814C00095AA0 /* Users.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
 		4D19C725200C815300095AA0 /* Friends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
 		4D19C727200C815C00095AA0 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
@@ -154,6 +162,7 @@
 				4DB2DEEF2004688C00749129 /* FriendTableViewCell.swift */,
 				4DB2DEF320046B7400749129 /* UserTableViewCell.swift */,
 				4D3F86A32008476000D738A0 /* CommentTableViewCell.swift */,
+				4D166032200FD1B300950239 /* ChatTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -225,6 +234,7 @@
 				4DC4D7152001650900A92D20 /* UserSettingsViewController.swift */,
 				4DCAC76A20032FB500A7E423 /* UserSettingsTableViewController.swift */,
 				4D5C1C0A200E712D004544D8 /* ProfileViewController.swift */,
+				4D166030200FD17100950239 /* ChatsTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -277,6 +287,8 @@
 				4D6167EA2005A2ED007B9418 /* Post.swift */,
 				4DC4D71A2001BF7400A92D20 /* CurrentUser.swift */,
 				4D3F869F2008358600D738A0 /* Comment.swift */,
+				4D16602E200FC9FD00950239 /* Message.swift */,
+				4D166034200FD69A00950239 /* Conversation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -542,14 +554,18 @@
 				4D5C1C0B200E712D004544D8 /* ProfileViewController.swift in Sources */,
 				4DC4D7142001637100A92D20 /* EditProfileViewController.swift in Sources */,
 				4D0ABA05200920A00063D615 /* FIRAuthService.swift in Sources */,
+				4D166033200FD1B300950239 /* ChatTableViewCell.swift in Sources */,
 				4DB2DEEE2004556300749129 /* ChatViewController.swift in Sources */,
 				4D0ABA032009185B0063D615 /* FIRAppService.swift in Sources */,
 				4D3F86A42008476000D738A0 /* CommentTableViewCell.swift in Sources */,
 				4DB2DEE82004554500749129 /* HomeViewController.swift in Sources */,
 				4DB2DEF420046B7400749129 /* UserTableViewCell.swift in Sources */,
+				4D166035200FD69A00950239 /* Conversation.swift in Sources */,
 				4DB2DEF02004688C00749129 /* FriendTableViewCell.swift in Sources */,
+				4D16602F200FC9FD00950239 /* Message.swift in Sources */,
 				4DC3D2B5200FA61D00F742E5 /* MsgTableViewCell.swift in Sources */,
 				4D6167EB2005A2ED007B9418 /* Post.swift in Sources */,
+				4D166031200FD17100950239 /* ChatsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,6 +721,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Instakilo/Instakilo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = RQAE768Z9N;
 				INFOPLIST_FILE = "$(SRCROOT)/Instakilo/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
-import FirebaseAuth
-import FirebaseDatabase
 import SVProgressHUD
 
 class AllUsersViewController: UIViewController {
@@ -21,115 +18,50 @@ class AllUsersViewController: UIViewController {
         }
     }
     
-    private var dbRef = Database.database().reference()
-    
+	private var refreshControl = UIRefreshControl()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Load USers VC")
-        tableview.rowHeight = UITableViewAutomaticDimension
-        tableview.estimatedRowHeight = 70
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "patternBackground")!)
+		setupUI()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        fetchAllUsers()
-    }
-    
-    @IBAction func addNRemoveFriend(_ sender: UIButton) {
-        
-        if let cell = sender.superview?.superview as? UserTableViewCell {
-            let indexPath = tableview.indexPath(for: cell)!
-            print("I am clicked")
-            let currentUid = Auth.auth().currentUser!.uid
-            let publicUserRef = dbRef.child("Public Users")
-            let key = publicUserRef.childByAutoId().key
-            let selectedUserId = self.allUsers[indexPath.row].id
-            
-            var isFollowing = false
-            
-            publicUserRef.child(currentUid).child("Following").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snapshot) in
-                if let friends = snapshot.value as? [String: Any] {
-                    // if we have following user
-                    for (ke, value) in friends {
-                        
-                        if value as! String == selectedUserId {
-                            isFollowing = true
-                            // we already followed him, unfollow instead
-                            publicUserRef.child(currentUid).child("Following/\(ke)").removeValue()
-                            publicUserRef.child(selectedUserId).child("Followers/\(ke)").removeValue()
-                            sender.isSelected = false
-                        }
-                    }
-                }
-                
-                if !isFollowing {
-                    // we need to follow this user
-                    let following = ["Following/\(key)": self.allUsers[indexPath.row].id]
-                    let follower = ["Followers/\(key)": currentUid]
-                    publicUserRef.child(currentUid).updateChildValues(following)
-                    publicUserRef.child(selectedUserId).updateChildValues(follower)
-                    sender.isSelected = true
-                }
-            })
-        }
-    }
-    
-    private func checkingFriendship(with indexPath: IndexPath) {
-        let currentUid = Auth.auth().currentUser!.uid
-        let publicUserRef = dbRef.child("Public Users")
-        var isFriend = false
-        
-        publicUserRef.child(currentUid).child("Following").queryOrderedByKey().observeSingleEvent(of: .value) { (snapshot) in
-            if let friends = snapshot.value as? [String: Any] {
-                // if we have friends
-                for (_, value) in friends {
-                    if value as! String == self.allUsers[indexPath.row].id {
-                        // if we already followed the user, change button state
-                        isFriend = true
-                        (self.tableview.cellForRow(at: indexPath) as! UserTableViewCell).friendButton.isSelected = true
-                    }
-                }
-            }
-            
-            if !isFriend {
-                // we need to friend this user
-                (self.tableview.cellForRow(at: indexPath) as! UserTableViewCell).friendButton.isSelected = false
-            }
-        }
-    }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		fetchAllUsers()
+	}
+	
+	private func setupUI() {
+		print("Load USers VC")
+		refreshControl.isEnabled = true
+		refreshControl.tintColor = UIColor.red
+		refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
+		
+		tableview.rowHeight = UITableViewAutomaticDimension
+		tableview.estimatedRowHeight = 70
+		view.backgroundColor = UIColor(patternImage: UIImage(named: "patternBackground")!)
+		tableview.addSubview(refreshControl)
+	}
+	
+	@objc func refreshAction() {
+		fetchAllUsers()
+	}
     
     private func fetchAllUsers() {
-        var temp = [PublicUser]()
-        let publicUserRef = dbRef.child("Public Users")
-        
-        if let userID = Auth.auth().currentUser?.uid {
-            SVProgressHUD.show()
-            
-            publicUserRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                SVProgressHUD.dismiss()
-                // Get user value
-                if let usersDict = snapshot.value as? [String: Any] {
-                    for (id, obj) in usersDict {
-                        if id != userID {
-                            let fullname = (obj as! [String: Any])["Full Name"] as! String
-                            let username = (obj as! [String: Any])["Username"] as! String
-                            let photoUrlStr = (obj as! [String: Any])["Profile Photo"] as! String
-                            
-                            temp.append(PublicUser(fullname: fullname, id: id, username: username, photoUrl: URL(string: photoUrlStr), following: nil, followers: nil))
-                        }
-                    }
-                    
-                    self.allUsers = temp
-                }
-                
-            }) { (error) in
-                print(error.localizedDescription)
-            }
-        }
+		showIndicators()
+		FIRAppService.shareInstance.fetchAllUsers { (pubUsers, error) in
+			DispatchQueue.main.async {
+				self.hideIndicators()
+				self.refreshControl.endRefreshing()
+			}
+			
+			guard let users = pubUsers, error == nil else {
+				print(error!)
+				return
+			}
+			
+			self.allUsers = users
+		}
     }
-    
-    
 }
 
 extension AllUsersViewController: UITableViewDelegate, UITableViewDataSource {
@@ -141,14 +73,35 @@ extension AllUsersViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableview.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserTableViewCell
         
         let currentPublicUser = allUsers[indexPath.row]
-        cell.userImageView?.sd_setImage(with: currentPublicUser.photoUrl, completed: nil)
-        cell.usernameLabel.text = currentPublicUser.username
-        cell.fullnameLabel.text = currentPublicUser.fullname
-        checkingFriendship(with: indexPath)
-        
+		cell.delegate = self
+		cell.configure(with: currentPublicUser)
+		
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    }
+}
+
+extension AllUsersViewController: UserTableViewCellDelegate {
+	func addFriendTapped(_ cell: UserTableViewCell) {
+		// get the current indexPath
+		guard let indexPath = tableview.indexPath(for: cell) else { return }
+		
+		// find the current User
+		let currentUser = allUsers[indexPath.row]
+		
+		// add or remove following/ followers from current user
+		if cell.friendButton.isSelected {
+			// remove this userId from currentuser following
+			CurrentUser.sharedInstance.following = CurrentUser.sharedInstance.following.filter { $0 != currentUser.id}
+		} else {
+			// add this userId add curentUser following
+			CurrentUser.sharedInstance.following.append(currentUser.id)
+		}
+		
+		// reload cell so that cell button state can be properly displayed
+		tableview.reloadRows(at: [indexPath], with: .none)
+		
+		// update User friendship status with firebase call
+		// friend if not, vice versa
+		FIRAppService.shareInstance.friendOrUnfriend(with: currentUser.id)
+	}
 }

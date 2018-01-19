@@ -63,7 +63,7 @@
                                                     <state key="normal" image="addFriend"/>
                                                     <state key="selected" image="addedFriend"/>
                                                     <connections>
-                                                        <action selector="addNRemoveFriend:" destination="P54-DF-WUd" eventType="touchUpInside" id="ER6-4i-4Og"/>
+                                                        <action selector="addFriend:" destination="r6f-oR-7AG" eventType="touchUpInside" id="lOs-TX-RJo"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

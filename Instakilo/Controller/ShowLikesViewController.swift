@@ -36,6 +36,9 @@ class ShowLikesViewController: UIViewController {
     private func setupUI() {
 		navigationItem.title = "Likes"
 		view.backgroundColor = UIColor(patternImage: UIImage(named: "patternBackground")!)
+		
+		tableview.rowHeight = UITableViewAutomaticDimension
+		tableview.estimatedRowHeight = 70
     }
     
     private func fetchLikedUsersBy(postId: String) {

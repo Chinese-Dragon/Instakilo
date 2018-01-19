@@ -67,39 +67,47 @@ class SignupOptionViewController: UIViewController {
                 }
                 return
             }
-            
-            let userRef = self.dbRef.child("Users")
-            let publicUserRef = self.dbRef.child("Public Users")
-            
-            userRef.child(user.uid).setValue(
-                ["Full Name": user.displayName ?? "",
-                 "Email Address": user.email ?? "",
-                 "Phone Number": user.phoneNumber ?? "",
-                 "Profile Photo": user.photoURL?.absoluteString,
-                 "Gender": "",
-                 "Bio": "",
-                 "Website": "",
-                 "Username": "",
-                 "Password": ""
-                ]
-            )
-            
-            publicUserRef.child(user.uid).setValue(
-                ["Full Name": user.displayName ?? "",
-                 "Profile Photo": user.photoURL?.absoluteString,
-                 "Username": "",
-                ]
-            )
-            
-            DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
-                
-                // Successfully registed, navigate to homeVC
-                if let _ = Auth.auth().currentUser {
-                    self.performSegue(withIdentifier: "OAuthToApp", sender: nil)
-					Messaging.messaging().subscribe(toTopic: user.uid)
-                }
-            }
+			
+			
+			// check if we already user records in our db
+			let userRef = self.dbRef.child("Users")
+			let publicUserRef = self.dbRef.child("Public Users")
+			
+			userRef.observeSingleEvent(of: .value) { (snapshot) in
+				if !snapshot.hasChild(user.uid) {
+					// setup inital user record if non exist
+					userRef.child(user.uid).setValue(
+						["Full Name": user.displayName ?? "",
+						 "Email Address": user.email ?? "",
+						 "Phone Number": user.phoneNumber ?? "",
+						 "Profile Photo": user.photoURL?.absoluteString,
+						 "Gender": "",
+						 "Bio": "",
+						 "Website": "",
+						 "Username": "",
+						 "Password": ""
+						]
+					)
+					
+					publicUserRef.child(user.uid).setValue(
+						["Full Name": user.displayName ?? "",
+						 "Profile Photo": user.photoURL?.absoluteString,
+						 "Username": "",
+						 ]
+					)
+				}
+				
+				// if already exist then just fetch currentInfo, and login
+				DispatchQueue.main.async {
+					SVProgressHUD.dismiss()
+					
+					// Successfully registed, navigate to homeVC
+					if let _ = Auth.auth().currentUser {
+						self.performSegue(withIdentifier: "OAuthToApp", sender: nil)
+						Messaging.messaging().subscribe(toTopic: user.uid)
+					}
+				}
+			}
         }
     }
 }

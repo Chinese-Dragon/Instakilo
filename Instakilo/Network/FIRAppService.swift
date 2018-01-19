@@ -22,13 +22,21 @@ class FIRAppService: NSObject {
     typealias FetchFeedsResultHandler = ([Post]?, String?) -> ()
     typealias FetchPublicUserResultHandler = (PublicUser?, String?) -> ()
 	typealias FetchCurrentUserResultHandler = (CurrentUser, String?) -> ()
+	typealias FetchConversationResulthandler = ([Conversation]?, String?) -> ()
+	typealias FetchUsersResultHandler = ([PublicUser]?, String?) -> ()
     typealias FirebaseDictionary = [String: Any]
     
     private lazy var dbRef = Database.database().reference()
     private lazy var postRef = Database.database().reference().child("Posts")
     private lazy var publicUserRef = Database.database().reference().child("Public Users")
     private lazy var userRef = Database.database().reference().child("Users")
-    
+    private lazy var conversationRef = Database.database().reference().child("Conversations")
+	private lazy var notificationRef = Database.database().reference().child("notificationRequests")
+	
+	
+	private lazy var currentUser = CurrentUser.sharedInstance
+	
+	
     private func checkLiked(postObj: FirebaseDictionary) -> Bool{
         var hasLiked = false
         
@@ -159,16 +167,16 @@ class FIRAppService: NSObject {
         }
     }
 	
-	func fetchCurrentUserData(completion: @escaping FetchCurrentUserResultHandler) {
+	func fetchCurrentUserData(completion: FetchCurrentUserResultHandler?) {
 		let fetchUserGroup = DispatchGroup()
 		let fetchUserComponentsGroup = DispatchGroup()
 		var errorMessage: String?
 		
 		guard let id = Auth.auth().currentUser?.uid else { return }
-		let user = CurrentUser.shareInstance
 		
 		fetchUserGroup.enter()
-		userRef.child(id).observeSingleEvent(of: .value) { (snapshot) in
+		userRef.child(id).observeSingleEvent(of: .value) { [weak self] (snapshot) in
+			guard let strongSelf = self else { return }
 			if let userObj = snapshot.value as? [String: Any],
 				let fullName = userObj["Full Name"] as? String,
 				let email = userObj["Email Address"] as? String,
@@ -181,27 +189,27 @@ class FIRAppService: NSObject {
 				let username = userObj["Username"] as? String,
 				let website = userObj["Website"] as? String {
 				
-				user.userId = id
-				user.fullname = fullName
-				user.email = email
-				user.bio = bio
-				user.gender = gender
-				user.password = password
-				user.phoneNumber = phoneNumber
-				user.profileImageUrl = profileURL
-				user.username = username
-				user.website = website
+				strongSelf.currentUser.userId = id
+				strongSelf.currentUser.fullname = fullName
+				strongSelf.currentUser.email = email
+				strongSelf.currentUser.bio = bio
+				strongSelf.currentUser.gender = gender
+				strongSelf.currentUser.password = password
+				strongSelf.currentUser.phoneNumber = phoneNumber
+				strongSelf.currentUser.profileImageUrl = profileURL
+				strongSelf.currentUser.username = username
+				strongSelf.currentUser.website = website
 				
 				fetchUserComponentsGroup.enter()
 				// need to fetch post info
-				self.fetchPostFor(currentUser: user) { (error) in
+				strongSelf.fetchPostFor(currentUser: strongSelf.currentUser) { (error) in
 					errorMessage = (errorMessage ?? "") + (error ?? "")
 					fetchUserComponentsGroup.leave()
 				}
 				
 				// need to fetch following and follower info
 				fetchUserComponentsGroup.enter()
-				self.fetchFollowInfoFor(currentUser: user) { (error) in
+				strongSelf.fetchFollowInfoFor(currentUser: strongSelf.currentUser) { (error) in
 					errorMessage = (errorMessage ?? "") + (error ?? "")
 					fetchUserComponentsGroup.leave()
 				}
@@ -216,17 +224,17 @@ class FIRAppService: NSObject {
 			}
 		}
 		
-		
-		
 		// when everything finished
 		fetchUserGroup.notify(queue: .main) {
 			// now the currentUser should be properly configured
-			completion(user, errorMessage)
+			completion?(self.currentUser, errorMessage)
 		}
 	}
 	
 	func fetchFollowInfoFor(currentUser: CurrentUser, completion: @escaping (String?) -> ()) {
 		var errorMessage: String?
+		currentUser.follwers.removeAll()
+		currentUser.following.removeAll()
 		
 		publicUserRef.child(currentUser.userId).observeSingleEvent(of: .value) { (snapshot) in
 			if let publicUserDict = snapshot.value as? [String: Any] {
@@ -255,6 +263,7 @@ class FIRAppService: NSObject {
 	
 	func fetchPostFor(currentUser: CurrentUser, completion: @escaping (String?) -> ()) {
 		var errorMessage: String?
+		currentUser.posts.removeAll()
 		
 		postRef.observeSingleEvent(of: .value) { (snapshot) in
 			if let posts = snapshot.value as? [String: Any] {
@@ -269,6 +278,186 @@ class FIRAppService: NSObject {
 			}
 			
 			completion(errorMessage)
+		}
+	}
+	
+	func fetchConversation(completion: @escaping FetchConversationResulthandler) {
+		var errorMessage: String?
+		var tempConvs: [Conversation] = []
+		let fetchConversationGroup = DispatchGroup()
+		let fetchPublicUserGroup = DispatchGroup()
+		
+		fetchConversationGroup.enter()
+		if let currentUserId = currentUser.userId {
+			conversationRef.observeSingleEvent(of: .value) { (snapshot) in
+				guard let conversations = snapshot.value as? FirebaseDictionary else {
+					errorMessage = "No conversation found"
+					completion(nil, errorMessage)
+					return
+				}
+				
+				for (convKey, msgTimes) in conversations {
+					if convKey.contains(currentUserId),
+						let msgTimeDicts = msgTimes as? [String: Any] {
+						
+						// TODO: Need to modify
+						let msgTimes = msgTimeDicts.keys.map { return Int($0)! }
+						let lastMsgTime = msgTimes.max()!.description
+						let lastMsgDict = (msgTimeDicts[lastMsgTime] as! FirebaseDictionary)
+						let lastMsg = lastMsgDict["Message"] as! String
+						
+						// get recevier's id
+						let receiverId = convKey.hasPrefix(currentUserId) ?
+						convKey.dropFirst(currentUserId.count) :
+						convKey.dropLast(currentUserId.count)
+						
+						// fetch receiver info
+						fetchPublicUserGroup.enter()
+						self.fetchPublicUser(with: receiverId.description) { (user, error) in
+							fetchPublicUserGroup.leave()
+							
+							guard error == nil, let receiver = user else {
+								errorMessage = (errorMessage ?? "") + error!
+								return
+							}
+							
+							tempConvs.append(Conversation(id: convKey, receriver: receiver, lastMessage: lastMsg, lastMessageTime: Double(lastMsgTime)!))
+						}
+					}
+				}
+				
+				fetchPublicUserGroup.notify(queue: .main) {
+					fetchConversationGroup.leave()
+				}
+			}
+		}
+		
+		fetchConversationGroup.notify(queue: .main) {
+			completion(tempConvs, errorMessage)
+		}
+	}
+	
+	func sendMsgTo(receiverId: String, with msg: Message) {
+		
+		// send message to firebase database
+		let conv = ["Sender ID": currentUser.userId,
+					 "Message": msg.content]
+		
+		// make sure we have the same order for convkey between two people
+		var convKey: String = ""
+		if receiverId < currentUser.userId {
+			convKey = receiverId + currentUser.userId
+		}else {
+			convKey = currentUser.userId + receiverId
+		}
+		
+		let convUpdates = ["\(convKey)/\(Int(msg.timeStamp))": conv]
+		conversationRef.updateChildValues(convUpdates)
+		
+		// send push notification to norificationRequest field in firebase that is observed by node.js server which will observe the change and then route the message to our receiver
+		let notificationKey = notificationRef.childByAutoId().key
+		let notification = ["message": msg.content, "receiverId": receiverId, "senderId": currentUser.userId]
+		
+		let notificationUpdate = [notificationKey: notification]
+		notificationRef.updateChildValues(notificationUpdate)
+	}
+	
+	func fetchFriends(completion: @escaping FetchUsersResultHandler) {
+		var errorMessage: String?
+		var tempFriends: [PublicUser] = []
+		let friendsRef = publicUserRef.child(currentUser.userId).child("Following")
+		let fetchFriendsGroup = DispatchGroup()
+		
+		friendsRef.observeSingleEvent(of: .value) { [weak self] (snapshot) in
+			guard let strongSelf = self else { return }
+			// check if we have friends
+			if let friends = snapshot.value as? [String: String] {
+				for (_, friendId) in friends {
+					
+					// get each friend info and construct an obj out of it
+					fetchFriendsGroup.enter()
+					strongSelf.fetchPublicUser(with: friendId) { (user, error) in
+						fetchFriendsGroup.leave()
+						if let friend = user, error == nil {
+							tempFriends.append(friend)
+						} else {
+							errorMessage = (errorMessage ?? "") + error!
+						}
+					}
+				}
+			} else {
+				errorMessage = "You have no friends"
+				completion(nil, errorMessage)
+			}
+			
+			fetchFriendsGroup.notify(queue: .main) {
+				completion(tempFriends, errorMessage)
+			}
+		}
+	}
+	
+	func friendOrUnfriend(with targetUsrId: String) {
+		let key = publicUserRef.childByAutoId().key
+		let followingsRef = publicUserRef.child(currentUser.userId).child("Following")
+		var isFollowing = false
+		
+		followingsRef.observeSingleEvent(of: .value) { [weak self] (snapshot) in
+			guard let strongSelf = self else { return }
+			
+			if let followings = snapshot.value as? [String: Any] {
+				// if there are anyone we are following
+				for (ke, value) in followings {
+					if value as! String == targetUsrId {
+						isFollowing = true
+						// we already followed him, unfollow instead
+						followingsRef.child(ke).removeValue()
+						strongSelf.publicUserRef.child(targetUsrId).child("Followers/\(ke)").removeValue()
+					}
+				}
+			}
+			
+			if !isFollowing {
+				// we need to follow this user
+				let following = [key: targetUsrId]
+				let follower = ["Followers/\(key)": strongSelf.currentUser.userId]
+				followingsRef.updateChildValues(following)
+				strongSelf.publicUserRef.child(targetUsrId).updateChildValues(follower as Any as! [AnyHashable : Any])
+			}
+		}
+	}
+	
+	func fetchAllUsers(completion: @escaping FetchUsersResultHandler) {
+		var errorMessage: String?
+		let fetchUserGroup = DispatchGroup()
+		var tempUsers: [PublicUser] = []
+		
+		publicUserRef.observeSingleEvent(of: .value) { [weak self] (snapshot) in
+			guard let strongSelf = self else { return }
+			guard let userIds = (snapshot.value as? [String: Any])?.keys else {
+				errorMessage = "No User Found"
+				completion(nil, errorMessage)
+				return
+			}
+			
+			for userId in userIds {
+				if userId == strongSelf.currentUser.userId {
+					continue
+				}
+				
+				fetchUserGroup.enter()
+				strongSelf.fetchPublicUser(with: userId) { (pubUser, error) in
+					fetchUserGroup.leave()
+					if let user = pubUser, error == nil {
+						tempUsers.append(user)
+					} else {
+						errorMessage = (errorMessage ?? "") + error!
+					}
+				}
+			}
+			
+			fetchUserGroup.notify(queue: .main) {
+				completion(tempUsers, errorMessage)
+			}
 		}
 	}
 }

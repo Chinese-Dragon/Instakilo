@@ -145,18 +145,17 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a comment" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ypc-Iv-oZb">
-                                        <rect key="frame" x="10" y="1" width="305" height="49"/>
+                                        <rect key="frame" x="10" y="1" width="316" height="49"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHA-X3-1O3">
-                                        <rect key="frame" x="315" y="1" width="60" height="49"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHA-X3-1O3">
+                                        <rect key="frame" x="326" y="1" width="49" height="49"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="dmi-LX-tjX"/>
+                                            <constraint firstAttribute="width" constant="49" id="dmi-LX-tjX"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="Post"/>
+                                        <state key="normal" image="send_button"/>
                                         <connections>
                                             <action selector="sendComment:" destination="t15-16-Cvh" eventType="touchUpInside" id="eij-Lf-Fye"/>
                                         </connections>
@@ -556,6 +555,7 @@
         <image name="defaultLike" width="22" height="22"/>
         <image name="like" width="22" height="22"/>
         <image name="send" width="22" height="22"/>
+        <image name="send_button" width="62" height="62"/>
         <image name="takePic" width="50" height="50"/>
     </resources>
 </document>

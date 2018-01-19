@@ -16,6 +16,7 @@ import SVProgressHUD
 
 protocol EditProfileViewControllerDelegate {
     func didUpdate(_ user: CurrentUser)
+	
 }
 
 class EditProfileViewController: UIViewController {
@@ -44,6 +45,7 @@ class EditProfileViewController: UIViewController {
         if let user = currentUser {
             updateUserInfo(with: user)
         }
+		
         setupUI()
     }
     
@@ -127,11 +129,10 @@ class EditProfileViewController: UIViewController {
                     SVProgressHUD.dismiss()
                     TWMessageBarManager().showMessage(withTitle: "Succes", description: "Successfully Updated Info", type: .success)
                     self.delegate?.didUpdate(userToBeSaved)
-                    self.dismiss(animated: true, completion: nil)
+					self.navigationController?.popViewController(animated: true)
                 }
             }
         }
-        
         print("About to save to DB")
     }
     
@@ -159,7 +160,6 @@ class EditProfileViewController: UIViewController {
                 // TODO: Show Success Message
                 // update current user's imageurl
                 self.currentUser?.profileImageUrl = URL(string: (metadata?.downloadURL()?.absoluteString)!)
-                
                 self.updateToDB(with: self.currentUser)
             }
         }

@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
 import GoogleSignIn
+import FirebaseMessaging
 
 class UserSettingsViewController: UITableViewController {
 
@@ -58,6 +59,12 @@ class UserSettingsViewController: UITableViewController {
         guard let rootViewController = window.rootViewController else {
             return
         }
+		
+		// unsubscribe user from push notification
+		Messaging.messaging().unsubscribe(fromTopic: CurrentUser.sharedInstance.userId)
+		
+		// Reset Current User
+		CurrentUser.sharedInstance.dispose()
 		
 		let authStoryboard = UIStoryboard(name: "Authentication", bundle: Bundle.main)
         let vc = authStoryboard.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController

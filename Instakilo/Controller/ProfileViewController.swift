@@ -23,24 +23,32 @@ class ProfileViewController: UIViewController {
 	
 	private var currentUser: CurrentUser? {
 		didSet {
-			if view.window != nil {
-				// update UI with currentUser Data
-				updateUIWith(user: currentUser!)
-			}
+			// update UI with currentUser Data
+			updateUIWith(user: currentUser!)
 		}
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		setupUI()
-		fetchCurrentUser()
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		if CurrentUser.sharedInstance.userId != nil {
+			currentUser = CurrentUser.sharedInstance
+		} else {
+			fetchCurrentUser()
+		}
+	}
 	
 	private func setupUI() {
 		profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
 		profileImage.clipsToBounds = true
 		view.backgroundColor = UIColor(patternImage: UIImage(named: "patternBackground")!)
 		profileCard.backgroundColor = UIColor.background
+		
+		// TODO: make view into tableview for pull to refresh for fetching updated currentuser data
 	}
 	
 	private func fetchCurrentUser() {
@@ -51,14 +59,6 @@ class ProfileViewController: UIViewController {
 				self.currentUser = user
 			}
 		}
-	}
-	
-	private func showIndicators() {
-		UIApplication.shared.isNetworkActivityIndicatorVisible = true
-	}
-	
-	private func hideIndicators() {
-		UIApplication.shared.isNetworkActivityIndicatorVisible = false
 	}
 	
 	private func updateUIWith(user: CurrentUser) {
@@ -83,6 +83,13 @@ class ProfileViewController: UIViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "EditProfileSegue", let targetVC = segue.destination.contents as? EditProfileViewController {
 			targetVC.currentUser = currentUser
+			targetVC.delegate = self
 		}
+	}
+}
+
+extension ProfileViewController: EditProfileViewControllerDelegate {
+	func didUpdate(_ user: CurrentUser) {
+		fetchCurrentUser()
 	}
 }

@@ -9,20 +9,69 @@
 // TODO: emoji keyboard bugs
 
 import UIKit
+import FirebaseDatabase
 
 class ChatViewController: UIViewController {
 	@IBOutlet weak var msgViewButtonConstraint: NSLayoutConstraint!
 	@IBOutlet weak var msgTextField: UITextField!
 	@IBOutlet weak var tableview: UITableView!
+	@IBOutlet weak var textFieldWrapper: UIView!
 	
-	var isSending: Bool = false
-	var msgQueue = [(String, Bool)]()
+	var receiver: PublicUser!
+	
+	private var msgQueue = [(Message, Bool)]() {
+		didSet {
+			msgQueue.sort{ $0.0.timeStamp < $1.0.timeStamp }
+			tableview.reloadData()
+			scrollToLastRow()
+		}
+	}
+	private var conversationRef: DatabaseReference!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		configureUI()
-		setUpNotification()
+		setUpKeyboardNotification()
+		setUpFirB()
+		observeMessages()
+	}
+	
+	private func setUpFirB() {
+		var convKey: String = ""
+		if receiver.id < CurrentUser.sharedInstance.userId {
+			convKey = receiver.id + CurrentUser.sharedInstance.userId
+		} else {
+			convKey = CurrentUser.sharedInstance.userId + receiver.id
+		}
+		
+		conversationRef = Database.database().reference().child("Conversations/\(convKey)")
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		conversationRef.removeAllObservers()
+	}
+	
+	func observeMessages() {
+		
+		// settup data binding for real time update
+		conversationRef.observe(.value) { (snapshot) in
+			guard let msgDicts = snapshot.value as? [String: Any] else { return }
+			self.msgQueue.removeAll()
+			for (msgTime, msgBody) in msgDicts {
+				if let msgContent = (msgBody as? [String: String])?["Message"],
+					let msgSenderId = (msgBody as? [String: String])?["Sender ID"] {
+					
+					let newMessage = Message(content: msgContent, timeStamp: Double(msgTime)!)
+					let msg = (newMessage, msgSenderId == CurrentUser.sharedInstance.userId)
+					DispatchQueue.main.async {
+						self.msgQueue.append(msg)
+						// scroll tableview to the bottom
+					}
+				}
+			}
+		}
 	}
 	
 }
@@ -38,48 +87,19 @@ extension ChatViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MsgTableViewCell
 		
-		return configureCell(cell: cell, indexPath: indexPath)
-	}
-	
-	private func configureCell(cell: MsgTableViewCell, indexPath: IndexPath) -> UITableViewCell {
-		// get current msg
-		let (msg, sender) = msgQueue[indexPath.row]
+		let currentMsg = msgQueue[indexPath.row]
 		
-		// configure cell
-		cell.receiverCellShadowView.isHidden = !cell.receiverCellShadowView.isHidden
-		cell.senderCellShadowView.isHidden = !cell.senderCellShadowView.isHidden
+		cell.configure(with: currentMsg)
 		
-		if sender {
-			cell.receiverCellShadowView.isHidden = true
-			cell.receiverMsgTextView.isHidden = true
-			
-			cell.senderMsgTextView.text = msg
-			cell.textLabel?.text = " "
-			
-			cell.senderCellShadowView.isHidden = false
-			cell.senderMsgTextView.isHidden = false
-		} else {
-			
-			cell.senderCellShadowView.isHidden = true
-			cell.senderMsgTextView.isHidden = true
-			
-			cell.receiverMsgTextView.text = msg
-			cell.detailTextLabel?.text = " "
-			
-			cell.receiverCellShadowView.isHidden = false
-			cell.receiverMsgTextView.isHidden = false
-		}
-		
-		// remove cell edge
-		cell.layoutMargins = UIEdgeInsets.zero
-		// return cell
 		return cell
 	}
 }
 
+// MARK: - Helper Methods
 private extension ChatViewController {
-	// MARK: - Helper Methods
-	private func configureUI() {
+	func configureUI() {
+		
+		navigationItem.title = receiver.username
 		
 		// for dismissing keyboard
 		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -92,47 +112,29 @@ private extension ChatViewController {
 		tableview.layoutMargins = UIEdgeInsets.zero
 		tableview.separatorInset = UIEdgeInsets.zero
 		
+		// make round textfield wrapper
+		textFieldWrapper.layer.cornerRadius = 15
+		textFieldWrapper.layer.borderColor = UIColor.gray.cgColor
+		textFieldWrapper.layer.borderWidth = 0.2
+		
 		// Do any additional setup after loading the view.
 		view.backgroundColor = UIColor(patternImage: UIImage(named: "patternBackground")!)
 	}
 	
-	private func setUpNotification () {
+	func setUpKeyboardNotification () {
 		// use built in notification name (UIKeyboardWillShow channel) to observe keyboard event
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillhide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 	}
 	
-	private func animate() {
-		UIView.animate(withDuration: 1.5) {
+	func animate() {
+		UIView.animate(withDuration: 1) {
 			self.view.layoutIfNeeded()
 		}
 	}
 	
-	private func showAlert(msg: String) {
-		let alert = UIAlertController(title: "Msg", message: msg, preferredStyle: .alert)
-		let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-		alert.addAction(action)
-		present(alert, animated: true, completion: nil)
-	}
-}
-
-private extension ChatViewController {
-	
-	// MARK: - Event handle Methods
-	@IBAction func submit(_ sender: UIButton) {
-		// Do something with input msg, validated text input
-		guard let inputText = msgTextField.text else {
-			showAlert(msg: "Make sure the text is not empty")
-			return
-		}
-		
-		// change current responder
-		isSending = !isSending
-		
-		// add to msgqueue
-		msgQueue.append((inputText, isSending))
-		
+	func finishSendingMessage() {
 		//clear msg
 		msgTextField.text = ""
 		
@@ -143,17 +145,41 @@ private extension ChatViewController {
 		tableview.reloadData()
 	}
 	
-	@objc private func keyboardWillShow(_ notification: Notification) {
+	func scrollToLastRow() {
+		if !msgQueue.isEmpty {
+			let indexPath = IndexPath(row: msgQueue.count - 1, section: 0)
+			tableview.scrollToRow(at: indexPath, at: .bottom, animated: false)
+		}
+	}
+}
+
+private extension ChatViewController {
+	
+	// MARK: - Event handle Methods
+	@IBAction func submit(_ sender: UIButton) {
+		// get current date
+		let unixTime = Date().timeIntervalSince1970
+		
+		// add to msgqueue
+		let currentMessage = Message(content: msgTextField.text!, timeStamp: unixTime)
+		
+		// send msg to firebase
+		FIRAppService.shareInstance.sendMsgTo(receiverId: receiver.id, with: currentMessage)
+		
+		finishSendingMessage()
+	}
+	
+	@objc func keyboardWillShow(_ notification: Notification) {
 		print("The keyboard is about to show, change constarint! ")
 		if let userInfo = notification.userInfo,
 			let keyboardSize = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
 			msgViewButtonConstraint.constant += keyboardSize.height
+			scrollToLastRow()
 			animate()
 		}
-		
 	}
 	
-	@objc private func keyboardWillhide(_ notification: Notification) {
+	@objc func keyboardWillhide(_ notification: Notification) {
 		print("The keyboard is about to hide, change constarint! ")
 		if let userInfo = notification.userInfo,
 			let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
@@ -162,7 +188,7 @@ private extension ChatViewController {
 		}
 	}
 	
-	@objc private func dismissKeyboard() {
+	@objc func dismissKeyboard() {
 		view.endEditing(true)
 	}
 }
