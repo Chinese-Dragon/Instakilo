@@ -30,10 +30,13 @@ class ChatViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
 		configureUI()
 		setUpKeyboardNotification()
 		setUpFirB()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 		observeMessages()
 	}
 	
@@ -54,26 +57,23 @@ class ChatViewController: UIViewController {
 	}
 	
 	func observeMessages() {
-		
 		// settup data binding for real time update
-		conversationRef.observe(.value) { (snapshot) in
-			guard let msgDicts = snapshot.value as? [String: Any] else { return }
-			self.msgQueue.removeAll()
-			for (msgTime, msgBody) in msgDicts {
-				if let msgContent = (msgBody as? [String: String])?["Message"],
-					let msgSenderId = (msgBody as? [String: String])?["Sender ID"] {
-					
-					let newMessage = Message(content: msgContent, timeStamp: Double(msgTime)!)
-					let msg = (newMessage, msgSenderId == CurrentUser.sharedInstance.userId)
-					DispatchQueue.main.async {
-						self.msgQueue.append(msg)
-						// scroll tableview to the bottom
-					}
+		// Retrieve lists of items or listen for additions to a list of items. This event is triggered once for each existing child and then again every time a new child is added to the specified path. The listener is passed a snapshot containing the new child's data.
+		// this event listener is perfect for our case as it will trigger for each message when first initalize
+		conversationRef.observe(.childAdded) { (snapshot) in
+			let msgTime = snapshot.key
+			guard let msgDicts = snapshot.value as? [String: String] else { return }
+			if let msgContent = msgDicts["Message"],
+				let msgSenderId = msgDicts["Sender ID"] {
+				
+				let newMessage = Message(content: msgContent, timeStamp: Double(msgTime)!)
+				let msg = (newMessage, msgSenderId == CurrentUser.sharedInstance.userId)
+				DispatchQueue.main.async {
+					self.msgQueue.append(msg)
 				}
 			}
 		}
 	}
-	
 }
 extension ChatViewController: UITableViewDataSource {
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -134,17 +134,6 @@ private extension ChatViewController {
 		}
 	}
 	
-	func finishSendingMessage() {
-		//clear msg
-		msgTextField.text = ""
-		
-		// hide the keyboard
-		msgTextField.resignFirstResponder()
-		
-		// reload tableview data
-		tableview.reloadData()
-	}
-	
 	func scrollToLastRow() {
 		if !msgQueue.isEmpty {
 			let indexPath = IndexPath(row: msgQueue.count - 1, section: 0)
@@ -166,15 +155,18 @@ private extension ChatViewController {
 		// send msg to firebase
 		FIRAppService.shareInstance.sendMsgTo(receiverId: receiver.id, with: currentMessage)
 		
-		finishSendingMessage()
+		msgTextField.text = ""
 	}
 	
 	@objc func keyboardWillShow(_ notification: Notification) {
 		print("The keyboard is about to show, change constarint! ")
 		if let userInfo = notification.userInfo,
-			let keyboardSize = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-			msgViewButtonConstraint.constant += keyboardSize.height
+			let keyboardHeight = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.height {
+			msgViewButtonConstraint.constant += keyboardHeight
+			
+//			let contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardHeight, 0.0)
 			scrollToLastRow()
+			tableview.setContentOffset(CGPoint(x: 0, y: keyboardHeight), animated: false)
 			animate()
 		}
 	}
@@ -182,7 +174,7 @@ private extension ChatViewController {
 	@objc func keyboardWillhide(_ notification: Notification) {
 		print("The keyboard is about to hide, change constarint! ")
 		if let userInfo = notification.userInfo,
-			let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+			let keyboardSize = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
 			msgViewButtonConstraint.constant -= keyboardSize.height
 			animate()
 		}

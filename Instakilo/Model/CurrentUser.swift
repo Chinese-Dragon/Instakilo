@@ -10,13 +10,11 @@ import Foundation
 import UIKit
 
 class CurrentUser: NSObject {
-	struct Static
-	{
+	struct Static {
 		static var instance: CurrentUser?
 	}
 	
-	class var sharedInstance: CurrentUser
-	{
+	class var sharedInstance: CurrentUser {
 		if Static.instance == nil
 		{
 			Static.instance = CurrentUser()
@@ -25,8 +23,7 @@ class CurrentUser: NSObject {
 		return Static.instance!
 	}
 	
-	func dispose()
-	{
+	func dispose() {
 		CurrentUser.Static.instance = nil
 		print("Disposed Singleton instance")
 	}

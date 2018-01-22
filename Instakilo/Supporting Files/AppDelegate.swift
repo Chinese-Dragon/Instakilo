@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 
-// ************************** For remote notification *************************
+// ************************** For Push notification *************************
 // MARK: - Remote Notification
 extension AppDelegate: MessagingDelegate {
 	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -122,10 +122,21 @@ extension AppDelegate: MessagingDelegate {
 	// NOTE: handle notification when in foreground
 	func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 
-		completionHandler(
-			[UNNotificationPresentationOptions.alert,
-			 UNNotificationPresentationOptions.sound,
-			 UNNotificationPresentationOptions.badge])
+		// show notification only when the notification is not coming from the person we are chatting right now
+		guard let userInfo = notification.request.content.userInfo as? [String : Any],
+			let senderId = userInfo["gcm.notification.sender"] as? String,
+			let root = window?.rootViewController as? UITabBarController,
+			let chatNav = root.viewControllers?[3] as? UINavigationController,
+			let chatVC = chatNav.visibleViewController as? ChatViewController,
+			chatVC.receiver.id == senderId else {
+				
+			completionHandler(
+				[UNNotificationPresentationOptions.alert,
+				 UNNotificationPresentationOptions.sound,
+				 UNNotificationPresentationOptions.badge])
+				
+			return
+		}
 	}
 }
 
@@ -150,7 +161,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 			let targetVC = chatStoryboard.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController,
 			let root = window?.rootViewController as? UITabBarController,
 			let chatNav = root.viewControllers?[3] as? UINavigationController,
-			let friendsVC = (root.viewControllers?[1] as? UINavigationController)?.contents as? FriendsViewController {
+			let friendsVC = (root.viewControllers?[1] as? UINavigationController)?.contents as? FriendsViewController,
+			!(chatNav.visibleViewController is ChatViewController) {
 			
 			var receiver: PublicUser!
 			for friend in friendsVC.friends {

@@ -47,7 +47,6 @@ class SignupOptionViewController: UIViewController {
         FaceBookLoginButton.readPermissions = ["public_profile", "email"]
         instagramHeaderImage.image = instagramHeaderImage.image!.withRenderingMode(.alwaysTemplate)
         instagramHeaderImage.tintColor = UIColor.white
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "patternBackground")!)
     }
     
     private func oAuthLoginWith(credential: AuthCredential) {

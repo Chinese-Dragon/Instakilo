@@ -185,7 +185,6 @@ class FIRAppService: NSObject {
 				let password = userObj["Password"] as? String,
 				let phoneNumber = userObj["Phone Number"] as? String,
 				let profilePhotoUrlStr = userObj["Profile Photo"] as? String,
-				let profileURL = URL(string: profilePhotoUrlStr),
 				let username = userObj["Username"] as? String,
 				let website = userObj["Website"] as? String {
 				
@@ -196,7 +195,7 @@ class FIRAppService: NSObject {
 				strongSelf.currentUser.gender = gender
 				strongSelf.currentUser.password = password
 				strongSelf.currentUser.phoneNumber = phoneNumber
-				strongSelf.currentUser.profileImageUrl = profileURL
+				strongSelf.currentUser.profileImageUrl = URL(string: profilePhotoUrlStr)
 				strongSelf.currentUser.username = username
 				strongSelf.currentUser.website = website
 				
@@ -368,8 +367,11 @@ class FIRAppService: NSObject {
 		let friendsRef = publicUserRef.child(currentUser.userId).child("Following")
 		let fetchFriendsGroup = DispatchGroup()
 		
+		fetchFriendsGroup.enter()
 		friendsRef.observeSingleEvent(of: .value) { [weak self] (snapshot) in
-			guard let strongSelf = self else { return }
+			guard let strongSelf = self else {
+				return
+			}
 			// check if we have friends
 			if let friends = snapshot.value as? [String: String] {
 				for (_, friendId) in friends {
@@ -390,9 +392,13 @@ class FIRAppService: NSObject {
 				completion(nil, errorMessage)
 			}
 			
-			fetchFriendsGroup.notify(queue: .main) {
-				completion(tempFriends, errorMessage)
+			defer {
+				fetchFriendsGroup.leave()
 			}
+		}
+		
+		fetchFriendsGroup.notify(queue: .main) {
+			completion(tempFriends, errorMessage)
 		}
 	}
 	
@@ -431,6 +437,7 @@ class FIRAppService: NSObject {
 		let fetchUserGroup = DispatchGroup()
 		var tempUsers: [PublicUser] = []
 		
+		fetchUserGroup.enter()
 		publicUserRef.observeSingleEvent(of: .value) { [weak self] (snapshot) in
 			guard let strongSelf = self else { return }
 			guard let userIds = (snapshot.value as? [String: Any])?.keys else {
@@ -455,9 +462,13 @@ class FIRAppService: NSObject {
 				}
 			}
 			
-			fetchUserGroup.notify(queue: .main) {
-				completion(tempUsers, errorMessage)
+			defer {
+				fetchUserGroup.leave()
 			}
+		}
+		
+		fetchUserGroup.notify(queue: .main) {
+			completion(tempUsers, errorMessage)
 		}
 	}
 }

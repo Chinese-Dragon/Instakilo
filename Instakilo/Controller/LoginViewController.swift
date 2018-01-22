@@ -41,7 +41,6 @@ class LoginViewController: UIViewController {
         instaHeaderTextVie.tintColor = UIColor.white
         loginButton.layer.cornerRadius = 5
         loginButton.clipsToBounds = true
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "patternBackground")!)
     }
     
     private func validateInputs() -> Bool {

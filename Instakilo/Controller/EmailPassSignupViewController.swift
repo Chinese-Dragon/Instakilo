@@ -39,8 +39,14 @@ class EmailPassSignupViewController: UIViewController {
         print("setupUI")
         signupButton.layer.cornerRadius = 5
         signupButton.clipsToBounds = true
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "patternBackground")!)
+		
+		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+		view.addGestureRecognizer(tapGesture)
     }
+	
+	@objc func dismissKeyboard() {
+		view.endEditing(true)
+	}
 
     @IBAction func backToRoot(_ sender: UIButton) {
         navigationController?.popToRootViewController(animated: true)
