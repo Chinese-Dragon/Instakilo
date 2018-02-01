@@ -62,13 +62,22 @@ private extension HomeViewController {
     func fetchFeeds() {
         showIndicators()
         fireService.fetchFeeds { (posts, error) in
-            if let unwrappedPost = posts, error == nil {
-                DispatchQueue.main.async {
-                    self.hideIndicators()
-					self.refreshControl.endRefreshing()
-                    self.posts = unwrappedPost
-                }
-            }
+			DispatchQueue.main.async {
+				self.hideIndicators()
+				self.refreshControl.endRefreshing()
+				
+				guard error == nil else {
+					print(error ?? "")
+					return
+				}
+				
+				guard let unwrappedPosts = posts else {
+					print("No Posts Available")
+					return
+				}
+				
+				self.posts = unwrappedPosts
+			}
         }
     }
 }
