@@ -16,7 +16,6 @@ import SVProgressHUD
 
 protocol EditProfileViewControllerDelegate {
     func didUpdate(_ user: CurrentUser)
-	
 }
 
 class EditProfileViewController: UIViewController {
@@ -24,14 +23,17 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var profileImgae: UIImageView!
     
     var currentUser: CurrentUser?
-    
     var containerVC: UserSettingsTableViewController?
-
     var delegate: EditProfileViewControllerDelegate?
-    
+	
+	var tap: UITapGestureRecognizer = {
+		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+		return tapGesture
+	}()
+	
     private lazy var storageRef = Storage.storage().reference()
     private lazy var dbRef = Database.database().reference()
-    
+	
     @IBAction func pickProfileImage(_ sender: UIButton) {
         let pickerVC = UIImagePickerController()
         pickerVC.delegate = self
@@ -45,9 +47,18 @@ class EditProfileViewController: UIViewController {
         if let user = currentUser {
             updateUserInfo(with: user)
         }
-		
         setupUI()
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		view.addGestureRecognizer(tap)
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		view.removeGestureRecognizer(tap)
+	}
     
     deinit {
         print("EditProfileVC removed")
@@ -56,7 +67,7 @@ class EditProfileViewController: UIViewController {
     private func setupUI() {
         profileImgae.layer.cornerRadius = profileImgae.frame.size.width / 2
         profileImgae.clipsToBounds = true
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "patternBackground")!)
+		view.backgroundColor = UIColor.background
     }
     
     private func updateUserInfo(with updatedUser: CurrentUser) {

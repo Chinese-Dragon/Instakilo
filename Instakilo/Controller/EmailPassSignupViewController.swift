@@ -44,9 +44,6 @@ class EmailPassSignupViewController: UIViewController {
 		view.addGestureRecognizer(tapGesture)
     }
 	
-	@objc func dismissKeyboard() {
-		view.endEditing(true)
-	}
 
     @IBAction func backToRoot(_ sender: UIButton) {
         navigationController?.popToRootViewController(animated: true)
@@ -94,7 +91,7 @@ class EmailPassSignupViewController: UIViewController {
             SVProgressHUD.show()
             // create user authentication info
             Auth.auth().createUser(withEmail: userEmail , password: userPassword ) { (user, error) in
-                
+                SVProgressHUD.dismiss()
                 guard let unwrappedUser = user, error == nil else {
                     DispatchQueue.main.async {
                         TWMessageBarManager().showMessage(withTitle: "Error", description: error!.localizedDescription, type: .error)
@@ -127,7 +124,6 @@ class EmailPassSignupViewController: UIViewController {
                 )
           
                 DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
                     // Successfully registed, navigate to homeVC
                     if let _ = Auth.auth().currentUser {
                         self.performSegue(withIdentifier: "SignupToApp", sender: nil)

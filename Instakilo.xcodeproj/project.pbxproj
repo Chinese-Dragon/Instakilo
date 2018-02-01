@@ -13,7 +13,6 @@
 		4D0ABA002009099A0063D615 /* ShowLikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0AB9FF2009099A0063D615 /* ShowLikesViewController.swift */; };
 		4D0ABA032009185B0063D615 /* FIRAppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0ABA022009185B0063D615 /* FIRAppService.swift */; };
 		4D0ABA05200920A00063D615 /* FIRAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0ABA04200920A00063D615 /* FIRAuthService.swift */; };
-		4D15BFBB200D2C67009C94D4 /* CurrentUserAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15BFBA200D2C67009C94D4 /* CurrentUserAccountManager.swift */; };
 		4D16602D200FA9F000950239 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D16602C200FA9F000950239 /* GoogleService-Info.plist */; };
 		4D16602F200FC9FD00950239 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D16602E200FC9FD00950239 /* Message.swift */; };
 		4D166031200FD17100950239 /* ChatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D166030200FD17100950239 /* ChatsTableViewController.swift */; };
@@ -51,7 +50,6 @@
 		4DC4D71B2001BF7400A92D20 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4D71A2001BF7400A92D20 /* CurrentUser.swift */; };
 		4DCAC76B20032FB500A7E423 /* UserSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCAC76A20032FB500A7E423 /* UserSettingsTableViewController.swift */; };
 		4DDB9A8C200C80A9004FCD29 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DDB9A8B200C80A9004FCD29 /* Home.storyboard */; };
-		4DDC0356200D502900B075D2 /* libPushWizard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF172B7200D4A45007F2D9B /* libPushWizard.a */; };
 		4DEDB077200665D40098E6F3 /* InstakiloTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DEDB076200665D40098E6F3 /* InstakiloTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +70,6 @@
 		4D0AB9FF2009099A0063D615 /* ShowLikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLikesViewController.swift; sourceTree = "<group>"; };
 		4D0ABA022009185B0063D615 /* FIRAppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRAppService.swift; sourceTree = "<group>"; };
 		4D0ABA04200920A00063D615 /* FIRAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRAuthService.swift; sourceTree = "<group>"; };
-		4D15BFBA200D2C67009C94D4 /* CurrentUserAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserAccountManager.swift; sourceTree = "<group>"; };
 		4D16602C200FA9F000950239 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4D16602E200FC9FD00950239 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		4D166030200FD17100950239 /* ChatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTableViewController.swift; sourceTree = "<group>"; };
@@ -116,10 +113,6 @@
 		4DEDB076200665D40098E6F3 /* InstakiloTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstakiloTests.swift; sourceTree = "<group>"; };
 		4DEDB078200665D40098E6F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DF172B2200D461A007F2D9B /* Instakilo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Instakilo.entitlements; sourceTree = "<group>"; };
-		4DF172B6200D4A45007F2D9B /* PushWizard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PushWizard.h; sourceTree = "<group>"; };
-		4DF172B7200D4A45007F2D9B /* libPushWizard.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPushWizard.a; sourceTree = "<group>"; };
-		4DF172B8200D4A45007F2D9B /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
-		4DF172B9200D4A7C007F2D9B /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		5EDD43B66C31382CA7B92E27 /* Pods_Instakilo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instakilo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACD17D84E1A6C0F494B4009 /* Pods-Instakilo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instakilo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Instakilo/Pods-Instakilo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,7 +122,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DDC0356200D502900B075D2 /* libPushWizard.a in Frameworks */,
 				1A459CFB2EC89500538D6652 /* Pods_Instakilo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,7 +141,6 @@
 			children = (
 				4D0ABA022009185B0063D615 /* FIRAppService.swift */,
 				4D0ABA04200920A00063D615 /* FIRAuthService.swift */,
-				4D15BFBA200D2C67009C94D4 /* CurrentUserAccountManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -197,8 +188,6 @@
 				4DC4D71020015AF600A92D20 /* Controller */,
 				4D0ABA01200918410063D615 /* Network */,
 				4DEDB6E720054B6C003EAB12 /* Utilities */,
-				4DF172B9200D4A7C007F2D9B /* Header.h */,
-				4DF172B5200D4A45007F2D9B /* libpushwizard */,
 				4DC4D709200153A100A92D20 /* Supporting Files */,
 			);
 			path = Instakilo;
@@ -268,16 +257,6 @@
 				4D00256920033E6100A830FA /* Utilities.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		4DF172B5200D4A45007F2D9B /* libpushwizard */ = {
-			isa = PBXGroup;
-			children = (
-				4DF172B6200D4A45007F2D9B /* PushWizard.h */,
-				4DF172B7200D4A45007F2D9B /* libPushWizard.a */,
-				4DF172B8200D4A45007F2D9B /* readme.txt */,
-			);
-			path = libpushwizard;
 			sourceTree = "<group>";
 		};
 		4DF865E42001DFA6004C31F7 /* Model */ = {
@@ -541,7 +520,6 @@
 				4D3F86A220083B2C00D738A0 /* AddCommentViewController.swift in Sources */,
 				4DB2DEEC2004555A00749129 /* FriendsViewController.swift in Sources */,
 				4DC4D7162001650900A92D20 /* UserSettingsViewController.swift in Sources */,
-				4D15BFBB200D2C67009C94D4 /* CurrentUserAccountManager.swift in Sources */,
 				4D00256A20033E6100A830FA /* Utilities.swift in Sources */,
 				4DB2DEF620046C5800749129 /* PublicUser.swift in Sources */,
 				4D3F86A02008358600D738A0 /* Comment.swift in Sources */,
@@ -732,7 +710,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Marko.Instakilo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = Instakilo/Header.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -755,7 +733,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Marko.Instakilo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = Instakilo/Header.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

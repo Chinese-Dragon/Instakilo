@@ -49,6 +49,8 @@ class ProfileViewController: UIViewController {
 		profileCard.backgroundColor = UIColor.background
 		
 		// TODO: make view into tableview for pull to refresh for fetching updated currentuser data
+		
+		BioLabel.sizeToFit()
 	}
 	
 	private func fetchCurrentUser() {

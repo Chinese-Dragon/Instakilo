@@ -135,10 +135,6 @@ class AddCommentViewController: UIViewController {
         }
     }
     
-    @objc private func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
     private func animate() {
         UIView.animate(withDuration: 1.5) {
             self.view.layoutIfNeeded()

@@ -23,11 +23,11 @@ class AllUsersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		setupUI()
+		fetchAllUsers()
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		fetchAllUsers()
 	}
 	
 	private func setupUI() {

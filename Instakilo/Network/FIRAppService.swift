@@ -11,7 +11,6 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-
 // how to handle nested network call:
 // https://stackoverflow.com/questions/35906568/wait-until-swift-for-loop-with-asynchronous-network-requests-finishes-executing
 

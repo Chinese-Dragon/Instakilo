@@ -15,7 +15,6 @@ import Crashlytics
 import UserNotifications
 import FirebaseMessaging
 
-//let appKey = "5a5d1297a3fc2768248b4727"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

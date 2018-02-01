@@ -17,7 +17,6 @@ class UserSettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Options"
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "patternBackground")!)
     }
     
     deinit {

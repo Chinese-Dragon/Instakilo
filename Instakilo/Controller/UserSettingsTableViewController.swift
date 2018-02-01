@@ -22,13 +22,20 @@ class UserSettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+		
+		setupUI()
+		
         if let user = currentUser {
             updateFields(user)
         }
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "patternBackground")!)
     }
-    
+	
+	private func setupUI() {
+		tableView.backgroundColor = UIColor.background
+		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.estimatedRowHeight = 40
+	}
+	
     private func updateFields(_ user: CurrentUser) {
         usernameTextField.text = user.username
         nameTextField.text = user.fullname

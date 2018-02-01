@@ -26,11 +26,26 @@ class AddPostViewController: UIViewController {
     
     private lazy var postRef = Database.database().reference().child("Posts")
     private lazy var storageRef = Storage.storage().reference()
-    
+	
+	var tap: UITapGestureRecognizer = {
+		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+		return tapGesture
+	}()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		view.addGestureRecognizer(tap)
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		view.removeGestureRecognizer(tap)
+	}
     
     @IBAction func post(_ sender: UIBarButtonItem) {
         view.endEditing(true)

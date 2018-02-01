@@ -32,10 +32,10 @@ class SignupOptionViewController: UIViewController {
         print("SignupOptionVC removed")
     }
     
-    @IBAction func googleSignin(_ sender: UIButton) {
-        GIDSignIn.sharedInstance().signIn()
-    }
-    
+//    @IBAction func googleSignin(_ sender: UIButton) {
+//        GIDSignIn.sharedInstance().signIn()
+//    }
+	
     @IBAction func backToRoot(_ sender: UIButton) {
         navigationController?.popToRootViewController(animated: true)
     }

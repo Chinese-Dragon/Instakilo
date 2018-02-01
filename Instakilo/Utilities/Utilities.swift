@@ -27,6 +27,10 @@ extension UIViewController {
 	func hideIndicators() {
 		UIApplication.shared.isNetworkActivityIndicatorVisible = false
 	}
+	
+	@objc func dismissKeyboard() {
+		view.endEditing(true)
+	}
 }
 
 extension UIColor {
@@ -39,7 +43,6 @@ extension Double {
     // MARK: Need to edit
     var timeElapsed: String {
         let elapseSeconds = Int(Date().timeIntervalSince1970 - self / 1000)
-        
         let hr = elapseSeconds / 3600
         let days = hr / 24
         let remainder = elapseSeconds - hr * 3600

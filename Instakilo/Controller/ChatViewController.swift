@@ -179,10 +179,6 @@ private extension ChatViewController {
 			animate()
 		}
 	}
-	
-	@objc func dismissKeyboard() {
-		view.endEditing(true)
-	}
 }
 
 

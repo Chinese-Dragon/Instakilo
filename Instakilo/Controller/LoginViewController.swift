@@ -31,7 +31,23 @@ class LoginViewController: UIViewController {
         
         setupUI()
     }
-    
+	
+	
+	var tap: UITapGestureRecognizer = {
+		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+		return tapGesture
+	}()
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		view.addGestureRecognizer(tap)
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		view.removeGestureRecognizer(tap)
+	}
+	
     deinit {
         print("LoginVC removed")
     }
@@ -74,6 +90,7 @@ class LoginViewController: UIViewController {
         
         if validateInputs(), let email = inputEmail, let password = inputPasssWord {
             Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+				
                 guard error == nil, let user = user else {
                     // TODO : SHow message
                     TWMessageBarManager().showMessage(withTitle: "Error", description: error!.localizedDescription, type: .error)
